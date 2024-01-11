@@ -1,0 +1,81 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true, // Expecting unit tests in future
+    "node": true
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    // "jest", // Maybe in the future
+    "react",
+    "@typescript-eslint",
+    "sort-keys-fix",
+    "typescript-sort-keys",
+    "unused-imports"
+  ],
+  "rules": {
+    "linebreak-style": ["error", "unix"],
+    "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
+    "quotes": ["warn", "single", { "allowTemplateLiterals": true, "avoidEscape": true }],
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-curly-brace-presence": "warn",
+    "react/jsx-uses-react": "off",
+    "react/no-array-index-key": "warn",
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+    "react/react-in-jsx-scope": "off",
+    "semi": ["error", "never"],
+    "spaced-comment": "warn",
+    "typescript-sort-keys/interface": "warn",
+    "typescript-sort-keys/string-enum": "warn",
+    "sort-keys": "off",
+    "sort-keys-fix/sort-keys-fix": "warn",
+    "unused-imports/no-unused-imports": "warn",
+    "unused-imports/no-unused-vars": [
+      "error",
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "@typescript-eslint/no-empty-function": ["warn", { "allow": ["arrowFunctions"] }],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "import/no-duplicates": "error",
+    "import/order": [
+      "warn",
+      {
+        "groups": [["builtin", "external", "internal"]],
+        "pathGroups": [
+          { "group": "external", "pattern": "react", "position": "before" },
+          {
+            "group": "external",
+            "pattern": "@mui/material",
+            "position": "before"
+          },
+          {
+            "group": "external",
+            "pattern": "@mui/material/**",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"]
+      }
+    ]
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "createDefaultProgram": true,
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  }
+}

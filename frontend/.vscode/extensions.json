@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "naumovs.color-highlight",
+    "mhutchie.git-graph",
+    "yoavbls.pretty-ts-errors",
+    "wayou.vscode-todo-highlight",
+    "AnthonyCJW.vscode-styled-components-cre-edition"
+  ]
+}
