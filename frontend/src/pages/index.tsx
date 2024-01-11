@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { Button } from '@carbon/react'
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>Hello World</h1>
+        <Button>Button</Button>
       </main>
     </>
   )

@@ -1,5 +1,18 @@
 import type { AppProps } from 'next/app'
+import dynamic from 'next/dynamic'
+import { Providers } from '@/components/app/Providers'
+import '@/styles/global.scss'
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <Providers>
+      <Component {...pageProps} />
+    </Providers>
+  )
 }
+
+// Since @carbon is a client-side package, this disables SSR for the entire app
+// instead of having to use not yet standardized 'use client' directive everywhere.
+export default dynamic(() => Promise.resolve(App), {
+  ssr: false,
+})
