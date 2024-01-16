@@ -11,6 +11,7 @@
 
 To test this application:
 
+- I use yarn@4.0.2 (stable) as my go-to package manager and Node.js v20.6.0 (stable)
 - I changed the default port from 3000 to 3091 on the frontend, so that it doesn't conflict with my other projects. This wouldn't have been done in a team environment.
 - In any real project, I would **always** end up with CSS-in-JS approach for it's flexible nature and DX/UX benefits. Sass modules do not offer any type safety or auto-completion.
 

@@ -1,3 +1,7 @@
+// Not using some directives, e.g. -> @use '@carbon/colors';
+// I find the carbon docs cumbersome to navigate and apply quickly for the purpose of this demo
+// Hence I reverted my stance to old-school scss (picking this up from memory from 2016+-)
+
 /* THEME SETUP */
 $color-primary: #54bec5;
 $color-secondary: #c083d6;
@@ -7,12 +11,10 @@ $text-color-primary: #373937;
 $text-color-highlighted: $color-primary;
 $text-color-highlighted-alt: $color-secondary;
 $text-color-disbled: #616161;
-$text-color-darkbg: #ffffff;
-
+$text-color-darkbg: #fff;
 $font-weight-light: 300;
 $font-weight-regular: 400;
-$font-weight-medium: 600;
-
+$font-weight-semibold: 600;
 $font-size-base: 1rem;
 
 /* UI STYLES */
@@ -20,8 +22,14 @@ $transition-duration-default: 0.2s;
 $transition-duration-slow: 0.35s;
 $transition-duration-turbo: 0.15s; // Lol, I couldn't resist, love the word "turbo"
 
-$border-radius-default: 0.75em;
+// https://carbondesignsystem.com/guidelines/motion/overview/#carbon-in-motion
 
-$box-shadow-default: 0 0.25em 0.5em rgba(0, 0, 0, 0.15);
+// Productive motion is appropriate for moments when the user needs to focus on completing tasks.
+$transition-expressive: motion(standard, expressive);
+
+// Expressive motion delivers enthusiastic, vibrant, and highly visible movement.
+$transition-productive: motion(standard, productive);
+$border-radius-default: 0.75em;
+$box-shadow-default: 0 0.25em 0.5em rgb(0 0 0 / 15%);
 
 /* COMPONENTS */

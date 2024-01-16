@@ -3,8 +3,17 @@
 # dependencies
 /node_modules
 /.pnp
+.pnp.*
 .pnp.js
 .yarn/install-state.gz
+
+# yarn v4
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # testing
 /coverage
@@ -34,3 +43,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# caches
+.eslintcache
+.stylelintcache
+.swc
