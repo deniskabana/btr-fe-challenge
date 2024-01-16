@@ -1,3 +1,5 @@
-@use '@/components/TutorialHeader/tutorial-header';
-
 @use '@carbon/react';
+
+.landing-page > * {
+  border: 1px solid red;
+}

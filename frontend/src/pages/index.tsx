@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Button } from '@carbon/react'
+import { Grid, Column } from '@carbon/react'
 
 export default function Home() {
   return (
@@ -7,9 +7,12 @@ export default function Home() {
       <Head>
         <title>Pokedex</title>
       </Head>
-
       <main>
-        <Button>Button</Button>
+        <Grid className="landing-page" fullWidth>
+          <Column lg={16} md={8} sm={4}>
+            Hello world
+          </Column>
+        </Grid>
       </main>
     </>
   )

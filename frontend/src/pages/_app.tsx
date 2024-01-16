@@ -1,14 +1,9 @@
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
-import { Providers } from '@/components/app/Providers'
 import '@/styles/global.scss'
 
 function App({ Component, pageProps }: AppProps) {
-  return (
-    <Providers>
-      <Component {...pageProps} />
-    </Providers>
-  )
+  return <Component {...pageProps} />
 }
 
 // Since @carbon is a client-side package, this disables SSR for the entire app
