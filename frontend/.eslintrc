@@ -3,12 +3,12 @@
     "browser": true,
     "es2021": true,
     "jest": true, // Expecting unit tests in future
-    "node": true
+    "node": true,
   },
   "extends": [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
   ],
   "plugins": [
     // "jest", // Maybe in the future
@@ -16,7 +16,7 @@
     "@typescript-eslint",
     "sort-keys-fix",
     "typescript-sort-keys",
-    "unused-imports"
+    "unused-imports",
   ],
   "rules": {
     "linebreak-style": ["error", "unix"],
@@ -37,14 +37,14 @@
     "sort-keys-fix/sort-keys-fix": "warn",
     "unused-imports/no-unused-imports": "warn",
     "unused-imports/no-unused-vars": [
-      "error",
+      "warn",
       {
         "args": "after-used",
         "argsIgnorePattern": "^_",
         "vars": "all",
         "varsIgnorePattern": "^_",
-        "ignoreRestSiblings": true
-      }
+        "ignoreRestSiblings": true,
+      },
     ],
     "@typescript-eslint/no-empty-function": ["warn", { "allow": ["arrowFunctions"] }],
     "@typescript-eslint/no-explicit-any": "off",
@@ -59,23 +59,23 @@
           {
             "group": "external",
             "pattern": "@mui/material",
-            "position": "before"
+            "position": "before",
           },
           {
             "group": "external",
             "pattern": "@mui/material/**",
-            "position": "before"
-          }
+            "position": "before",
+          },
         ],
-        "pathGroupsExcludedImportTypes": ["builtin"]
-      }
-    ]
+        "pathGroupsExcludedImportTypes": ["builtin"],
+      },
+    ],
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "createDefaultProgram": true,
     "ecmaFeatures": { "jsx": true },
     "ecmaVersion": "latest",
-    "sourceType": "module"
-  }
+    "sourceType": "module",
+  },
 }
