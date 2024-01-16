@@ -1,0 +1,43 @@
+// Utilities
+@import 'src/styles/variables';
+
+.PokemonTable {
+  border-radius: $border-radius-default;
+  font-size: $font-size-base;
+  overflow: hidden;
+  color: $text-color-primary;
+  box-shadow: $box-shadow-default;
+
+  margin-top: 2em;
+  width: 100%;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+
+  thead {
+    background-color: $color-primary;
+    color: white;
+    font-weight: $font-weight-medium;
+
+    tr {
+      th {
+        padding: 8px;
+        text-align: left;
+      }
+    }
+  }
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      &:hover {
+        background-color: rgba($color-primary, 0.25);
+      }
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+    }
+  }
+}
