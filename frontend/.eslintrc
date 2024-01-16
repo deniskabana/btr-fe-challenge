@@ -3,12 +3,12 @@
     "browser": true,
     "es2021": true,
     "jest": true, // Expecting unit tests in future
-    "node": true,
+    "node": true
   },
   "extends": [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
+    "plugin:react/recommended"
   ],
   "plugins": [
     // "jest", // Maybe in the future
@@ -16,7 +16,7 @@
     "@typescript-eslint",
     "sort-keys-fix",
     "typescript-sort-keys",
-    "unused-imports",
+    "unused-imports"
   ],
   "rules": {
     "linebreak-style": ["error", "unix"],

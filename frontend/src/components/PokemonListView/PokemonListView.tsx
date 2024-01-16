@@ -10,7 +10,13 @@ type Pokemon = {
   name: string
   types: string[]
 }
-const pokemonListFields: (keyof Pokemon)[] = ['id', 'name', 'image', 'isFavorite', 'types']
+const pokemonListFields: (keyof Pokemon)[] = [
+  'id',
+  'name',
+  'image',
+  'isFavorite',
+  'types',
+]
 
 const GET_POKEMONS = gql`
   query getPokemonList {

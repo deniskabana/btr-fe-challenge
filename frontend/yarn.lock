@@ -3823,7 +3823,7 @@ __metadata:
     graphql: "npm:^16.8.1"
     next: "npm:14.0.4"
     postcss: "npm:^8.4.33"
-    prettier: "npm:^3.1.1"
+    prettier: "npm:^3.2.2"
     react: "npm:^18"
     react-dom: "npm:^18"
     sass: "npm:^1.69.7"
@@ -3911,7 +3911,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.1.1":
+"prettier@npm:^3.2.2":
   version: 3.2.2
   resolution: "prettier@npm:3.2.2"
   bin:
