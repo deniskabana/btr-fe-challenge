@@ -5,18 +5,17 @@
 .PokemonFilter {
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
-  padding: 1rem;
-  border: 1px solid $border-color;
+  padding: $padding-default;
+  padding-top: $padding-dense;
   border-radius: $border-radius-default;
   background-color: $content-bg;
   box-shadow: $box-shadow-default;
 }
 
 .Title {
+  display: block;
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: layout.$spacing-06;
 }
 
 .Form {
@@ -27,6 +26,16 @@
   @include grid.breakpoint-up('md', $breakpoints: grid.$grid-breakpoints) {
     flex-direction: row;
   }
+}
+
+.ButtonGroup span:first-of-type .Button {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.ButtonGroup span:last-of-type .Button {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
 // Inputs

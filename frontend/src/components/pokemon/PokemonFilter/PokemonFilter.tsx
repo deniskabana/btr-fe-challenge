@@ -58,58 +58,61 @@ export const PokemonFilter = () => {
   )
 
   return (
-    <div className={styles.PokemonFilter}>
+    <>
       <strong className={styles.Title} aria-label={TEXT.filters.pokemon.aria.label}>
         {TEXT.filters.pokemon.title}
       </strong>
+      <div className={styles.PokemonFilter}>
+        <Form aria-label={TEXT.filters.pokemon.aria.search}>
+          <div className={styles.Form}>
+            <div className={styles['Input--view']}>
+              <FormGroup legendText={TEXT.filters.pokemon.viewTypeOptions.title}>
+                <div className={styles.ButtonGroup}>
+                  {VIEW_TYPE_OPTIONS.map((view) => (
+                    <Button
+                      size="md"
+                      kind={view.value === viewType ? 'primary' : 'tertiary'}
+                      key={view.value}
+                      onClick={viewTypeChangeFactory(view.value)}
+                      hasIconOnly
+                      iconDescription={view.label}
+                      aria-label={view.label}
+                      className={styles.Button}
+                    >
+                      <view.icon />
+                    </Button>
+                  ))}
+                </div>
+              </FormGroup>
+            </div>
 
-      <Form aria-label={TEXT.filters.pokemon.aria.search}>
-        <div className={styles.Form}>
-          <div className={styles['Input--search']}>
-            <TextInput
-              id=""
-              labelText={TEXT.filters.pokemon.filter.search}
-              placeholder={TEXT.filters.pokemon.filter.searchPlaceholder}
-            />
-          </div>
-          <div className={styles['Input--type']}>
-            <Select
-              id=""
-              labelText={TEXT.filters.pokemon.filter.type}
-              defaultValue="-1"
-              placeholder=""
-            >
-              <SelectItem
-                disabled
-                hidden
-                value="-1"
-                text={TEXT.filters.pokemon.filter.type}
+            <div className={styles['Input--search']}>
+              <TextInput
+                id=""
+                labelText={TEXT.filters.pokemon.filter.search}
+                placeholder={TEXT.filters.pokemon.filter.searchPlaceholder}
               />
-              <SelectItem value="option-1" text="Option 1" />
-            </Select>
-          </div>
+            </div>
 
-          <div className={styles['Input--view']}>
-            <FormGroup legendText={TEXT.filters.pokemon.viewTypeOptions.title}>
-              <div>
-                {VIEW_TYPE_OPTIONS.map((view) => (
-                  <Button
-                    size="md"
-                    kind={view.value === viewType ? 'primary' : 'tertiary'}
-                    key={view.value}
-                    onClick={viewTypeChangeFactory(view.value)}
-                    hasIconOnly
-                    iconDescription={view.label}
-                    aria-label={view.label}
-                  >
-                    <view.icon />
-                  </Button>
-                ))}
-              </div>
-            </FormGroup>
+            <div className={styles['Input--type']}>
+              <Select
+                id=""
+                labelText={TEXT.filters.pokemon.filter.type}
+                defaultValue="-1"
+                placeholder=""
+              >
+                <SelectItem
+                  disabled
+                  hidden
+                  value="-1"
+                  text={TEXT.filters.pokemon.filter.type}
+                />
+                <SelectItem value="option-1" text="Option 1" />
+              </Select>
+            </div>
           </div>
-        </div>
-      </Form>
-    </div>
+        </Form>
+      </div>
+    </>
   )
 }

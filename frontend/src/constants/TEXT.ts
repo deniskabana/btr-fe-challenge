@@ -15,8 +15,8 @@ const TEXT = {
         type: 'Type',
       },
       tabs: {
-        all: 'All',
-        favorites: 'Favorites',
+        all: 'All Pokemons',
+        favorites: 'My Favorites',
       },
       title: 'Find your pokemon',
       viewTypeOptions: {

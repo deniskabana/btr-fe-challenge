@@ -17,28 +17,34 @@
   --cds-border-interactive: #{$clr-focus} !important;
 }
 
+// BODY DEFAULTS
+// --------------------------------------------------
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
 // BUTTONS
 // --------------------------------------------------
 
 .cds--btn {
-  $clr-primary: $color-primary;
-  $clr-primary-dark: darken($color-primary, 10%);
-  $clr-secondary: $color-secondary;
-  $clr-secondary-dark: darken($color-secondary, 10%);
-
   // Primary
-  --cds-button-primary: #{$clr-primary};
-  --cds-button-primary-hover: #{$clr-primary-dark};
-  --cds-button-primary-active: #{$clr-primary-dark};
-  --cds-button-primary-focus: #{$clr-primary-dark};
+  --cds-button-primary: #{$color-primary};
+  --cds-button-primary-hover: #{$color-primary-dark};
+  --cds-button-primary-active: #{$color-primary-dark};
+  --cds-button-primary-focus: #{$color-primary-dark};
   // Secondary
-  --cds-button-secondary: #{$clr-secondary};
-  --cds-button-secondary-hover: #{$clr-secondary-dark};
-  --cds-button-secondary-active: #{$clr-secondary-dark};
-  --cds-button-secondary-focus: #{$clr-secondary-dark};
+  --cds-button-secondary: #{$color-secondary};
+  --cds-button-secondary-hover: #{$color-secondary-dark};
+  --cds-button-secondary-active: #{$color-secondary-dark};
+  --cds-button-secondary-focus: #{$color-secondary-dark};
   // Tertiary
-  --cds-button-tertiary: #{$clr-primary};
-  --cds-button-tertiary-hover: #{$clr-primary-dark};
-  --cds-button-tertiary-active: #{$clr-primary-dark};
-  --cds-button-tertiary-focus: #{$clr-primary-dark};
+  --cds-button-tertiary: #{$color-primary};
+  --cds-button-tertiary-hover: #{$color-primary-dark};
+  --cds-button-tertiary-active: #{$color-primary-dark};
+  --cds-button-tertiary-focus: #{$color-primary-dark};
+
+  border-radius: $border-radius-default;
 }

@@ -1,20 +1,25 @@
+@use '@carbon/layout';
 @import 'src/styles/variables';
 
-.PokemonTable {
+.PokemonContainer {
+  display: flex;
+  flex-direction: column;
+  padding: $padding-default;
   border-radius: $border-radius-default;
-  font-size: $font-size-base;
-  overflow: hidden;
-  color: $text-color-primary;
+  background-color: $content-bg;
   box-shadow: $box-shadow-default;
-  margin-top: 2em;
+}
+
+.PokemonTable {
+  font-size: $font-size-base;
+  color: $text-color-primary;
+  margin-top: layout.$spacing-03;
   width: 100%;
   border-spacing: 0;
-  border: 1px solid #ddd;
   margin-bottom: 20px;
 
   thead {
-    background-color: $color-primary;
-    color: white;
+    background-color: $color-secondary;
     font-weight: $font-weight-semibold;
 
     tr {

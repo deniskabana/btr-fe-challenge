@@ -1,5 +1,7 @@
-export const EntityGridView = <Entity extends Record<string, unknown>>(
-  data: Entity[],
-) => {
+export const EntityGridView = <Entity extends Record<string, unknown>>({
+  data,
+}: {
+  data: Entity[]
+}) => {
   return <span>Here will be a grid</span>
 }

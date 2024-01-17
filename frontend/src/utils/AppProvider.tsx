@@ -1,6 +1,6 @@
 import { ApolloProvider } from '@apollo/client'
 import { apollo } from '@/api/apollo'
-import { Theme } from '@carbon/react'
+import { ThemeProvider } from '@/utils/ThemeProvider/ThemeProvider'
 
 /**
  * AppProvider
@@ -12,7 +12,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }): JSX.El
   return (
     <>
       <ApolloProvider client={apollo}>
-        <Theme theme="g10">{children}</Theme>
+        <ThemeProvider>{children}</ThemeProvider>
       </ApolloProvider>
     </>
   )

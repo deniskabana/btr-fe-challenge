@@ -1,6 +1,7 @@
 import { gql, useQuery } from '@apollo/client'
 import TEXT from '@/constants/TEXT'
 import { Tabs, TabList, Tab } from '@carbon/react'
+import { EntityGridView } from '@/components/common/EntityGridView/EntityGridView'
 import styles from './styles.module.scss'
 import { FILTER_TYPE_OPTIONS, PokemonFilter } from '../PokemonFilter/PokemonFilter'
 
@@ -46,10 +47,10 @@ export const PokemonListView = () => {
         <>
           <PokemonFilter />
 
-          <div>
+          <div className={styles.PokemonContainer}>
             <div>
               <Tabs onChange={() => {}}>
-                <TabList aria-label={TEXT.filters.pokemon.aria.tabList}>
+                <TabList aria-label={TEXT.filters.pokemon.aria.tabList} contained>
                   {FILTER_TYPE_OPTIONS.map((value) => (
                     <Tab key={value}>{TEXT.filters.pokemon.tabs[value]}</Tab>
                   ))}
@@ -57,25 +58,7 @@ export const PokemonListView = () => {
               </Tabs>
             </div>
 
-            <table className={styles.PokemonTable}>
-              <thead>
-                <tr>
-                  {pokemonListFields.map((field) => (
-                    <th key={field}>{field}</th>
-                  ))}
-                </tr>
-              </thead>
-
-              <tbody>
-                {pokemonData.pokemons.edges.map((pokemon: Pokemon) => (
-                  <tr key={pokemon.id}>
-                    {pokemonListFields.map((field) => (
-                      <td key={field}>{JSON.stringify(pokemon[field], null, 2)}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <EntityGridView<Pokemon> data={pokemonData.pokemons.edges} />
           </div>
         </>
       )}
