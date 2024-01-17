@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prettify": "prettier --write src",
     "lint:styles": "stylelint \"src/**/*.scss\"",
-    "lint:fix": "yarn lint --fix && yarn lint:styles --fix"
+    "lint:fix": "yarn lint --fix && yarn lint:styles --fix",
+    "gql:codegen": "graphql-codegen"
   },
   "dependencies": {
     "@carbon/colors": "11.20.0",
@@ -28,6 +29,10 @@
   },
   "devDependencies": {
     "@apollo/client": "^3.8.9",
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/client-preset": "4.1.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@parcel/watcher": "^2.4.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -43,7 +48,7 @@
     "prettier": "^3.2.2",
     "stylelint": "^16.1.0",
     "stylelint-config-standard-scss": "^13.0.0",
-    "typescript": "^5"
+    "typescript": "^5.3.3"
   },
   "packageManager": "yarn@4.0.2",
   "engines": {

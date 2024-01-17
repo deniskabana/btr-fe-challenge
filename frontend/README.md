@@ -1,5 +1,20 @@
 # Pokedex FE app
 
+### Getting started
+
+Assumed `cwd` is in `./frontend` directory
+- Getting started
+  - verify correct yarn version: `yarn --version # 4.0.2`
+  - if you don't have yarn, install it: `npm i -g yarn`
+  - if you have yarn, update it: `yarn set version 4.0.2`
+  - some users might need to run `enable corepack` first
+  - install dependencies: `yarn`
+- Starting the app: `yarn dev`
+  - if you are developing actively, also run `cd ../backend/ && npm i && npm start` to start the backend server
+  - if you are working with graphql queries, run `yarn codegen` or consider even `--watch` flag
+
+---
+
 ### Pending work
 
 - **Important - Implement [gql error handling](https://www.apollographql.com/docs/apollo-server/data/errors/)**
