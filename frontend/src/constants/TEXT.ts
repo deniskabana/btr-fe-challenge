@@ -2,6 +2,29 @@
 // in using i18n for this project.
 
 const TEXT = {
+  filters: {
+    pokemon: {
+      aria: {
+        label: 'Pokemon Filter',
+        search: 'Search Pokemons',
+        tabList: 'Pokemon Filter List',
+      },
+      filter: {
+        search: 'Search',
+        type: 'Type',
+      },
+      tabs: {
+        all: 'All',
+        favorites: 'Favorites',
+      },
+      title: 'Find your pokemon',
+      viewTypeOptions: {
+        grid: 'Grid',
+        list: 'List',
+        title: 'View Type',
+      },
+    },
+  },
   meta: {
     appTitle: 'Pokedex',
   },

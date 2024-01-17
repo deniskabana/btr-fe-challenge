@@ -1,5 +1,6 @@
 import { gql, useQuery } from '@apollo/client'
 import styles from './styles.module.scss'
+import { PokemonFilter } from '../PokemonFilter/PokemonFilter'
 
 // I should be able to consume types like this from graphql/server I assume 🤷‍♂️
 // TODO: Pending graphql/server types implementation if I have enough time
@@ -40,25 +41,29 @@ export const PokemonListView = () => {
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>Error 🥺</p>}
       {pokemonData && (
-        <table className={styles.PokemonTable}>
-          <thead>
-            <tr>
-              {pokemonListFields.map((field) => (
-                <th key={field}>{field}</th>
-              ))}
-            </tr>
-          </thead>
+        <>
+          <PokemonFilter />
 
-          <tbody>
-            {pokemonData.pokemons.edges.map((pokemon: Pokemon) => (
-              <tr key={pokemon.id}>
+          <table className={styles.PokemonTable}>
+            <thead>
+              <tr>
                 {pokemonListFields.map((field) => (
-                  <td key={field}>{JSON.stringify(pokemon[field], null, 2)}</td>
+                  <th key={field}>{field}</th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {pokemonData.pokemons.edges.map((pokemon: Pokemon) => (
+                <tr key={pokemon.id}>
+                  {pokemonListFields.map((field) => (
+                    <td key={field}>{JSON.stringify(pokemon[field], null, 2)}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
       )}
     </>
   )
