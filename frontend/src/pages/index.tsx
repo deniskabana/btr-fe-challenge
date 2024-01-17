@@ -1,7 +1,8 @@
 import Head from 'next/head'
-import { Grid, Column } from '@carbon/react'
+import { Column } from '@carbon/react'
 import { PokemonListView } from '@/components/PokemonListView/PokemonListView'
 import TEXT from '@/constants/TEXT'
+import { ContainerGrid } from '@/components/common/ContainerGrid/ContainerGrid'
 
 export default function Home() {
   return (
@@ -10,11 +11,11 @@ export default function Home() {
         <title>{TEXT.meta.appTitle}</title>
       </Head>
       <main>
-        <Grid className="landing-page" fullWidth>
+        <ContainerGrid>
           <Column lg={16} md={8} sm={4}>
             <PokemonListView />
           </Column>
-        </Grid>
+        </ContainerGrid>
       </main>
     </>
   )

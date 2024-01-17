@@ -1,0 +1,44 @@
+@import 'variables';
+
+// GLOBAL THEME SETTINGS ATTEMPT
+
+.cds--text-input:focus,
+.cds--text-input:active,
+.cds--select-input:focus,
+.cds--tabs .cds--tabs__nav-link:focus,
+.cds--tabs .cds--tabs__nav-link:active,
+.cds--tabs .cds--tabs__nav-item--selected,
+.cds--btn {
+  $clr-focus: $color-primary;
+
+  --cds-focus: #{$clr-focus} !important;
+  --cds-button-focus-color: #{$clr-focus} !important;
+  --cds-border-strong: #{$clr-focus} !important;
+  --cds-border-interactive: #{$clr-focus} !important;
+}
+
+// BUTTONS
+// --------------------------------------------------
+
+.cds--btn {
+  $clr-primary: $color-primary;
+  $clr-primary-dark: darken($color-primary, 10%);
+  $clr-secondary: $color-secondary;
+  $clr-secondary-dark: darken($color-secondary, 10%);
+
+  // Primary
+  --cds-button-primary: #{$clr-primary};
+  --cds-button-primary-hover: #{$clr-primary-dark};
+  --cds-button-primary-active: #{$clr-primary-dark};
+  --cds-button-primary-focus: #{$clr-primary-dark};
+  // Secondary
+  --cds-button-secondary: #{$clr-secondary};
+  --cds-button-secondary-hover: #{$clr-secondary-dark};
+  --cds-button-secondary-active: #{$clr-secondary-dark};
+  --cds-button-secondary-focus: #{$clr-secondary-dark};
+  // Tertiary
+  --cds-button-tertiary: #{$clr-primary};
+  --cds-button-tertiary-hover: #{$clr-primary-dark};
+  --cds-button-tertiary-active: #{$clr-primary-dark};
+  --cds-button-tertiary-focus: #{$clr-primary-dark};
+}

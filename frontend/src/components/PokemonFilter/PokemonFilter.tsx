@@ -1,17 +1,6 @@
 import { useCallback, useState } from 'react'
 import TEXT from '@/constants/TEXT'
-import {
-  Tabs,
-  TabList,
-  Tab,
-  Form,
-  Stack,
-  TextInput,
-  Select,
-  SelectItem,
-  Button,
-  FormGroup,
-} from '@carbon/react'
+import { Form, TextInput, Select, SelectItem, Button, FormGroup } from '@carbon/react'
 import { Grid as GridIcon, List as ListIcon } from '@carbon/icons-react'
 import { CarbonIconType } from '@carbon/icons-react/lib/CarbonIcon'
 import styles from './styles.module.scss'
@@ -32,8 +21,8 @@ export enum PokemonViewOptions {
 // CONSTANTS
 // --------------------------------------------------
 
-const FILTER_TYPE_OPTIONS = Object.values(PokemonFilterType)
-const VIEW_TYPE_OPTIONS: {
+export const FILTER_TYPE_OPTIONS = Object.values(PokemonFilterType)
+export const VIEW_TYPE_OPTIONS: {
   icon: CarbonIconType
   label: string
   value: PokemonViewOptions
@@ -70,28 +59,20 @@ export const PokemonFilter = () => {
 
   return (
     <div className={styles.PokemonFilter}>
-      <h5 aria-label={TEXT.filters.pokemon.aria.label}>{TEXT.filters.pokemon.title}</h5>
-
-      <div>
-        <Tabs onChange={handleFilterTypeChange}>
-          <TabList aria-label={TEXT.filters.pokemon.aria.tabList}>
-            {FILTER_TYPE_OPTIONS.map((value) => (
-              <Tab key={value}>{TEXT.filters.pokemon.tabs[value]}</Tab>
-            ))}
-          </TabList>
-        </Tabs>
-      </div>
+      <strong className={styles.Title} aria-label={TEXT.filters.pokemon.aria.label}>
+        {TEXT.filters.pokemon.title}
+      </strong>
 
       <Form aria-label={TEXT.filters.pokemon.aria.search}>
-        <Stack gap={4} orientation="horizontal">
-          <div>
+        <div className={styles.Form}>
+          <div className={styles['Input--search']}>
             <TextInput
               id=""
               labelText={TEXT.filters.pokemon.filter.search}
-              placeholder=""
+              placeholder={TEXT.filters.pokemon.filter.searchPlaceholder}
             />
           </div>
-          <div>
+          <div className={styles['Input--type']}>
             <Select
               id=""
               labelText={TEXT.filters.pokemon.filter.type}
@@ -108,7 +89,7 @@ export const PokemonFilter = () => {
             </Select>
           </div>
 
-          <div>
+          <div className={styles['Input--view']}>
             <FormGroup legendText={TEXT.filters.pokemon.viewTypeOptions.title}>
               <div>
                 {VIEW_TYPE_OPTIONS.map((view) => (
@@ -127,7 +108,7 @@ export const PokemonFilter = () => {
               </div>
             </FormGroup>
           </div>
-        </Stack>
+        </div>
       </Form>
     </div>
   )

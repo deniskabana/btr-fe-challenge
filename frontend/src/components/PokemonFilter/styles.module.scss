@@ -1,10 +1,45 @@
+@use '@carbon/grid';
+@use '@carbon/layout';
+@import 'src/styles/variables';
+
 .PokemonFilter {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
   padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border: 1px solid $border-color;
+  border-radius: $border-radius-default;
+  background-color: $content-bg;
+  box-shadow: $box-shadow-default;
+}
+
+.Title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: layout.$spacing-06;
+}
+
+.Form {
+  display: flex;
+  gap: layout.$spacing-06;
+  flex-direction: column;
+
+  @include grid.breakpoint-up('md', $breakpoints: grid.$grid-breakpoints) {
+    flex-direction: row;
+  }
+}
+
+// Inputs
+.Input {
+  &--search {
+    flex: 2 0 auto;
+  }
+
+  &--type {
+    flex: 1 0 auto;
+  }
+
+  &--view {
+    flex: 0 0 auto;
+  }
 }

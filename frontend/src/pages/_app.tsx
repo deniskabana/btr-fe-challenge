@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
+import '@/styles/carbon.scss'
 import '@/styles/global.scss'
 import { AppProvider } from '@/utils/AppProvider'
 

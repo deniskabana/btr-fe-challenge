@@ -1,11 +1,12 @@
-// Not using some directives, e.g. -> @use '@carbon/colors';
-// I find the carbon docs very lacking in information to navigate and apply
-// themes and preferences on this project.
+@use '@carbon/layout';
 
-// Hence I reverted my stance to old-school scss (picking this up from memory from 2016+-)
+// Carbon is poorly documented imo (at least for the things I'm trying to do),
+// has a ridgid stance toward being hard to use and throws errors on code from docs.
+
+// I have implemented a lot of my own code to overwrite Carbon's defaults.
 
 /* THEME SETUP */
-$color-primary: #54bec5;
+$color-primary: #32b393;
 $color-secondary: #c083d6;
 
 /* TYPOGRAPHY */
@@ -19,11 +20,16 @@ $font-weight-regular: 400;
 $font-weight-semibold: 600;
 $font-size-base: 1rem;
 
-/* UI STYLES */
+/* UI & LAYOUT */
+$max-container-size: 960px;
+$border-color: $text-color-disbled;
+
+$content-bg: #fff;
+
+/* MOTION STYLES */
 $transition-duration-default: 0.2s;
 $transition-duration-slow: 0.35s;
 $transition-duration-turbo: 0.15s; // Lol, I couldn't resist, love the word "turbo"
-
 // https://carbondesignsystem.com/guidelines/motion/overview/#carbon-in-motion
 
 // Productive motion is appropriate for moments when the user needs to focus on completing tasks.
@@ -33,5 +39,3 @@ $transition-expressive: motion(standard, expressive);
 $transition-productive: motion(standard, productive);
 $border-radius-default: 0.75em;
 $box-shadow-default: 0 0.25em 0.5em rgb(0 0 0 / 15%);
-
-/* COMPONENTS */

@@ -11,6 +11,7 @@ const TEXT = {
       },
       filter: {
         search: 'Search',
+        searchPlaceholder: 'Enter Pokemon name...',
         type: 'Type',
       },
       tabs: {
