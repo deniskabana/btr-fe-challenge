@@ -26,7 +26,17 @@ body,
   height: 100%;
 }
 
-// BUTTONS
+main {
+  background-color: $bg;
+}
+
+// INPUT AND SELECT
+.cds--text-input,
+.cds--select-input {
+  background-color: transparent;
+}
+
+// BUTTON
 // --------------------------------------------------
 
 .cds--btn {
@@ -46,5 +56,5 @@ body,
   --cds-button-tertiary-active: #{$color-primary-dark};
   --cds-button-tertiary-focus: #{$color-primary-dark};
 
-  border-radius: $border-radius-default;
+  border-radius: $border-radius-small;
 }

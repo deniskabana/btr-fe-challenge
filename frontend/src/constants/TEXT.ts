@@ -13,12 +13,13 @@ const TEXT = {
         search: 'Search',
         searchPlaceholder: 'Enter Pokemon name...',
         type: 'Type',
+        typeAll: 'All Types',
       },
       tabs: {
         all: 'All Pokemons',
         favorites: 'My Favorites',
       },
-      title: 'Find your pokemon',
+      title: 'Browse Pokemons',
       viewTypeOptions: {
         grid: 'Grid',
         list: 'List',
@@ -28,6 +29,11 @@ const TEXT = {
   },
   meta: {
     appTitle: 'Pokedex',
+  },
+  pokemonList: {
+    overlay: {
+      viewDetail: 'View detail',
+    },
   },
 }
 

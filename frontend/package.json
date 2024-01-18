@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "next dev -p 3091",
-    "build": "next build",
+    "dev": "yarn gql:codegen && next dev -p 3091",
+    "build": "yarn gql:codegen &&next build",
     "start": "next start",
     "lint": "next lint",
     "prettify": "prettier --write src",

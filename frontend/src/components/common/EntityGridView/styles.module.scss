@@ -1,0 +1,86 @@
+@use '@carbon/layout';
+@use '@carbon/type';
+@import '@/styles/variables.scss';
+
+.EntityGridView {
+  padding: layout.$spacing-05 0;
+}
+
+.EntityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  grid-gap: layout.$spacing-06;
+}
+
+.GridItem {
+  display: flex;
+  flex-direction: column;
+  padding: layout.$spacing-03;
+  padding-bottom: layout.$spacing-04;
+  gap: layout.$spacing-04;
+  border-radius: $border-radius-default;
+  border: 1px solid $border-color;
+  transition: all $transition-duration-default $transition-productive;
+
+  &:hover,
+  &:focus {
+    border-color: $color-secondary;
+
+    img {
+      transform: scale3d(1.1, 1.1, 1.0);
+    }
+
+    .ImageOverlay {
+      opacity: 1;
+    }
+  }
+}
+
+.Image {
+  width: 100%;
+  height: 10rem;
+  padding: layout.$spacing-04;
+  background-color: white; // Those are JPEGs
+  border-radius: $border-radius-default;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale3d(1);
+    transition: all $transition-duration-slow $transition-expressive;
+  }
+}
+
+.ImageOverlay {
+  @include type.type-style('body-02');
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(#000, 0.8);
+  pointer-events: none;
+  transition: all $transition-duration-default $transition-productive;
+  opacity: 0;
+  z-index: 1;
+}
+
+.Name {
+  @include type.type-style('heading-compact-02');
+  color: $color-secondary-dark;
+  margin-bottom: layout.$spacing-02;
+
+  [data-dark-mode="true"] & {
+    color: $color-secondary;
+  }
+}
+
+.Types {
+  @include type.type-style('body-compact-01');
+}

@@ -105,7 +105,7 @@ export const PokemonFilter = () => {
                   disabled
                   hidden
                   value="-1"
-                  text={TEXT.filters.pokemon.filter.type}
+                  text={TEXT.filters.pokemon.filter.typeAll}
                 />
                 <SelectItem value="option-1" text="Option 1" />
               </Select>

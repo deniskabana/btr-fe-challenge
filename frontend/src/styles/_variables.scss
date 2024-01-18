@@ -1,6 +1,7 @@
 @use '@carbon/layout';
 @use '@carbon/colors';
 @use '@carbon/themes';
+@use '@carbon/motion' as *;
 @use '@carbon/grid';
 
 // Carbon is poorly documented imo (at least for the things I'm trying to do),
@@ -9,10 +10,10 @@
 // I have implemented a lot of my own code to overwrite Carbon's defaults.
 
 /* THEME SETUP */
-$color-primary: colors.$green-40;
-$color-primary-dark: colors.$green-40-hover;
-$color-secondary: colors.$yellow-30;
-$color-secondary-dark: colors.$yellow-30-hover;
+$color-primary: colors.$yellow-40;
+$color-primary-dark: colors.$yellow-40-hover;
+$color-secondary: colors.$red-40;
+$color-secondary-dark: colors.$red-40-hover;
 
 /* TYPOGRAPHY */
 $text-color-primary: #373937;
@@ -33,6 +34,7 @@ $padding-default: layout.$spacing-04;
 $padding-dense: layout.$spacing-03;
 $padding-spacious: layout.$spacing-05;
 
+$bg: themes.$background;
 $content-bg: themes.$layer-01;
 
 /* MOTION STYLES */
@@ -50,4 +52,5 @@ $transition-productive: motion(standard, productive);
 /* UI EFECTS */
 
 $border-radius-default: 0.75em;
-$box-shadow-default: 0 0.25em 0.5em rgb(0 0 0 / 15%);
+$border-radius-small: 0.5em;
+$box-shadow-default: 0 0.25em 0.5em rgb(0 0 0 / 25%);

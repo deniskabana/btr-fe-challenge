@@ -1,7 +1,8 @@
+import { useEffect } from 'react'
 import { useQuery } from '@apollo/client'
 import { graphql } from '@/__generated__/gql'
 import TEXT from '@/constants/TEXT'
-import { Tabs, TabList, Tab } from '@carbon/react'
+import { Tabs, TabList, Tab, Loading } from '@carbon/react'
 import { EntityGridView } from '@/components/common/EntityGridView/EntityGridView'
 import styles from './styles.module.scss'
 import { FILTER_TYPE_OPTIONS, PokemonFilter } from '../PokemonFilter/PokemonFilter'
@@ -24,10 +25,17 @@ export const PokemonListView = () => {
   const { loading, error, data } = useQuery(GET_POKEMONS)
   const pokemonData = data?.pokemons.edges
 
+  useEffect(() => {
+    if (!loading && error) {
+      // toast.error('Error 🥺')
+    }
+  }, [loading, error])
+
   return (
     <>
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>Error 🥺</p>}
+      {/* Would've handled this one better in real-world app */}
+      {loading && <Loading withOverlay={false} />}
+
       {pokemonData && (
         <>
           <PokemonFilter />

@@ -28,7 +28,11 @@ export const ThemeProvider = ({
   }
 
   return (
-    <Theme className={styles.Wrapper} theme={isDark ? 'g100' : 'g10'}>
+    <Theme
+      className={styles.Wrapper}
+      data-dark-mode={isDark}
+      theme={isDark ? 'g100' : 'g10'}
+    >
       {children}
     </Theme>
   )
