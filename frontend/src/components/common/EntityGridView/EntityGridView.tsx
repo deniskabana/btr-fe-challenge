@@ -1,4 +1,5 @@
 import TEXT from '@/constants/TEXT'
+import Link from 'next/link'
 import styles from './styles.module.scss'
 
 export type E = {
@@ -14,7 +15,7 @@ export const EntityGridView = <Entity extends E = E>({ data }: { data: Entity[] 
     <div className={styles.EntityGridView}>
       <div className={styles.EntityGrid}>
         {data.map((entity) => (
-          <div key={entity.id} className={styles.GridItem}>
+          <Link as="button" href="#" key={entity.id} className={styles.GridItem}>
             <div className={styles.Image}>
               <div className={styles.ImageOverlay}>
                 {TEXT.pokemonList.overlay.viewDetail}
@@ -28,7 +29,7 @@ export const EntityGridView = <Entity extends E = E>({ data }: { data: Entity[] 
                 {entity.types?.join(', ') || <>&mdash;</>}
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

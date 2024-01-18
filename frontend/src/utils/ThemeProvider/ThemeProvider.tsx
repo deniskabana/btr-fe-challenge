@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Theme } from '@carbon/react'
+import { DarkThemeContext } from '@/context/DarkThemeContext'
 import styles from './styles.module.scss'
 
 export const ThemeProvider = ({
@@ -23,17 +24,24 @@ export const ThemeProvider = ({
   }, [userPrefersDark])
 
   // TODO: Implement a toggle in app
-  const _toggleTheme = () => {
+  const toggleTheme = () => {
     setIsDark(!isDark)
   }
 
   return (
-    <Theme
-      className={styles.Wrapper}
-      data-dark-mode={isDark}
-      theme={isDark ? 'g100' : 'g10'}
+    <DarkThemeContext.Provider
+      value={{
+        darkMode: isDark,
+        toggleDarkMode: toggleTheme,
+      }}
     >
-      {children}
-    </Theme>
+      <Theme
+        className={styles.Wrapper}
+        data-dark-mode={isDark}
+        theme={isDark ? 'g100' : 'g10'}
+      >
+        {children}
+      </Theme>
+    </DarkThemeContext.Provider>
   )
 }

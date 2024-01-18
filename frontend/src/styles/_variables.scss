@@ -19,7 +19,7 @@ $color-secondary-dark: colors.$red-40-hover;
 $text-color-primary: #373937;
 $text-color-highlighted: $color-primary;
 $text-color-highlighted-alt: $color-secondary;
-$text-color-disbled: #616161;
+$text-color-disbled: #838383;
 $text-color-darkbg: #fff;
 $font-weight-light: 300;
 $font-weight-regular: 400;
@@ -29,6 +29,7 @@ $font-size-base: 1rem;
 /* UI & LAYOUT */
 $max-container-size: map-get(map-get(grid.$grid-breakpoints, lg), width);
 $border-color: $text-color-disbled;
+$border-color-lighter: rgba($border-color, 0.65);
 
 $padding-default: layout.$spacing-04;
 $padding-dense: layout.$spacing-03;
@@ -54,3 +55,4 @@ $transition-productive: motion(standard, productive);
 $border-radius-default: 0.75em;
 $border-radius-small: 0.5em;
 $box-shadow-default: 0 0.25em 0.5em rgb(0 0 0 / 25%);
+$box-shadow-mini: 0 0.2em 0.3em rgb(0 0 0 / 15%);

@@ -2,8 +2,10 @@ import { useEffect } from 'react'
 import { useQuery } from '@apollo/client'
 import { graphql } from '@/__generated__/gql'
 import TEXT from '@/constants/TEXT'
-import { Tabs, TabList, Tab, Loading } from '@carbon/react'
+import { Tabs, TabList, Tab, Loading, Button } from '@carbon/react'
 import { EntityGridView } from '@/components/common/EntityGridView/EntityGridView'
+import { useDarkTheme } from '@/context/DarkThemeContext'
+import { AsleepFilled, DataEnrichment } from '@carbon/icons-react'
 import styles from './styles.module.scss'
 import { FILTER_TYPE_OPTIONS, PokemonFilter } from '../PokemonFilter/PokemonFilter'
 
@@ -22,6 +24,7 @@ const GET_POKEMONS = graphql(/* GraphQL */ `
 `)
 
 export const PokemonListView = () => {
+  const { darkMode, toggleDarkMode } = useDarkTheme()
   const { loading, error, data } = useQuery(GET_POKEMONS)
   const pokemonData = data?.pokemons.edges
 
@@ -38,6 +41,20 @@ export const PokemonListView = () => {
 
       {pokemonData && (
         <>
+          <div className={styles.Title}>
+            <strong>{TEXT.filters.pokemon.title}</strong>
+            <Button
+              kind="tertiary"
+              size="sm"
+              className={styles.Button}
+              onClick={toggleDarkMode}
+              aria-label={TEXT.ui.setDarkMode}
+              renderIcon={darkMode ? DataEnrichment : AsleepFilled}
+            >
+              {darkMode ? TEXT.ui.setLightMode : TEXT.ui.setDarkMode}
+            </Button>
+          </div>
+
           <PokemonFilter />
 
           <div className={styles.PokemonContainer}>

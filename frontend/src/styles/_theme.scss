@@ -17,6 +17,12 @@
   --cds-border-interactive: #{$clr-focus} !important;
 }
 
+*,
+.cds--btn,
+.cds--btn__icon {
+  transition: $transition-duration-default $transition-expressive;
+}
+
 // BODY DEFAULTS
 // --------------------------------------------------
 

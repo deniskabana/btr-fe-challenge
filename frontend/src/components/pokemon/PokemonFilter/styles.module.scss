@@ -16,7 +16,7 @@
   z-index: 2;
   backdrop-filter: blur(12px) saturate(140%);
 
-  background-color: #{rgba(map-get(themes.$g10, layer-01), 0.9)};
+  background-color: #{rgba(map-get(themes.$g10, layer-01), 0.85)};
 
   [data-dark-mode="true"] & {
     background-color: #{rgba(map-get(themes.$g100, layer-01), 0.95)};

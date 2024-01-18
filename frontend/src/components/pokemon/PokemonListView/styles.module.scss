@@ -1,5 +1,22 @@
 @use '@carbon/layout';
+@use '@carbon/type';
 @import 'src/styles/variables';
+
+.Title {
+  display: flex;
+  align-items: center;
+
+  strong {
+    @include type.type-style('heading-04');
+  }
+}
+
+.Button {
+  padding-left: layout.$spacing-04;
+  padding-right: layout.$spacing-08;
+  margin-left: auto;
+  margin-right: 0;
+}
 
 .PokemonContainer {
   display: flex;
@@ -8,42 +25,4 @@
   border-radius: $border-radius-default;
   background-color: $content-bg;
   box-shadow: $box-shadow-default;
-}
-
-.PokemonTable {
-  font-size: $font-size-base;
-  color: $text-color-primary;
-  margin-top: layout.$spacing-03;
-  width: 100%;
-  border-spacing: 0;
-  margin-bottom: 20px;
-
-  thead {
-    background-color: $color-secondary;
-    font-weight: $font-weight-semibold;
-
-    tr {
-      th {
-        padding: 8px;
-        text-align: left;
-      }
-    }
-  }
-
-  tbody {
-    tr {
-      &:nth-child(even) {
-        background-color: #f2f2f2;
-      }
-
-      &:hover {
-        background-color: rgba($color-primary, 0.25);
-      }
-
-      td {
-        padding: 8px;
-        text-align: left;
-      }
-    }
-  }
 }

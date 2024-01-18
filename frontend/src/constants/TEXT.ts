@@ -35,6 +35,10 @@ const TEXT = {
       viewDetail: 'View detail',
     },
   },
+  ui: {
+    setDarkMode: 'Dark Mode',
+    setLightMode: 'Light Mode',
+  },
 }
 
 export default TEXT
