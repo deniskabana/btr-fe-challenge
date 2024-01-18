@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { PokemonListView } from '@/components/pokemon/PokemonListView/PokemonListView'
+import { PokemonListView } from '@/components/pokemon/PokemonLIstView/PokemonListView'
 import TEXT from '@/constants/TEXT'
 import { ContainerGrid } from '@/components/common/ContainerGrid/ContainerGrid'
 

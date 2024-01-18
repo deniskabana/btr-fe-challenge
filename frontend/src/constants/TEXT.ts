@@ -2,6 +2,11 @@
 // in using i18n for this project.
 
 const TEXT = {
+  favorites: {
+    empty: 'You have no favorite Pokemons. Time to add some!',
+    favorite: 'Add to Favorites',
+    unfavorite: 'Remove from Favorites',
+  },
   filters: {
     pokemon: {
       aria: {

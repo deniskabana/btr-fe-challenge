@@ -13,13 +13,13 @@
   box-shadow: $box-shadow-default;
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 5;
   backdrop-filter: blur(12px) saturate(140%);
 
-  background-color: #{rgba(map-get(themes.$g10, layer-01), 0.85)};
+  background-color: #{rgba(map-get(themes.$g10, layer-01), 0.75)};
 
   [data-dark-mode="true"] & {
-    background-color: #{rgba(map-get(themes.$g100, layer-01), 0.95)};
+    background-color: #{rgba(map-get(themes.$g100, layer-01), 0.9)};
   }
 }
 

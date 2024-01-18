@@ -6478,6 +6478,7 @@ __metadata:
     postcss: "npm:^8.4.33"
     prettier: "npm:^3.2.2"
     react: "npm:^18"
+    react-browser-form: "npm:^0.1.10"
     react-dom: "npm:^18"
     sass: "npm:^1.69.7"
     stylelint: "npm:^16.1.0"
@@ -6644,6 +6645,15 @@ __metadata:
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
   checksum: 900a93d3cdae3acd7d16f642c29a642aea32c2026446151f0778c62ac089d4b8e6c986811076e1ae180a694cedf077d453a11b58ff0a865629a4f82ab558e102
+  languageName: node
+  linkType: hard
+
+"react-browser-form@npm:^0.1.10":
+  version: 0.1.10
+  resolution: "react-browser-form@npm:0.1.10"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 8c558b0baa3851b3dfa14597c3a6988a7f746716fbf11abcc8ca0c6d0405d560d9016f8e6c0f15bfc758c75c20db1264a34ed0f8fc4315de4cd8ac9eb5183c0e
   languageName: node
   linkType: hard
 

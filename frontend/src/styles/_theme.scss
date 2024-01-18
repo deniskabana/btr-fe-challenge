@@ -17,7 +17,7 @@
   --cds-border-interactive: #{$clr-focus} !important;
 }
 
-*,
+*:not(div):not(svg),
 .cds--btn,
 .cds--btn__icon {
   transition: $transition-duration-default $transition-expressive;
@@ -40,6 +40,27 @@ main {
 .cds--text-input,
 .cds--select-input {
   background-color: transparent;
+}
+
+// TABS
+// --------------------------------------------------
+.cds--tabs.cds--tabs--contained {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px solid $border-color-lighter;
+    z-index: 1;
+  }
+
+  .cds--tabs__nav-item {
+    z-index: 2;
+    position: relative;
+  }
 }
 
 // BUTTON
