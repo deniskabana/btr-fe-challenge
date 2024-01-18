@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import TEXT from '@/constants/TEXT'
 import { Tabs, TabList, Tab, Loading, Button } from '@carbon/react'
@@ -14,6 +14,7 @@ import { PokemonFilterType } from './types'
 import styles from './styles.module.scss'
 
 export const PokemonListView = () => {
+  const [tabIndex, setTabIndex] = useState(0)
   const { darkMode, toggleDarkMode } = useDarkTheme()
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_POKEMONS_QUERY)
   const [filter, setFilter] = useState<FilterForm>(filterFormDefaults)
@@ -43,14 +44,11 @@ export const PokemonListView = () => {
 
       if (scrollTop + clientHeight >= scrollHeight - scrollHeight * SCROLL_THRESHOLD) {
         fetchMore({
-          // concatenate old and new entries
           updateQuery: (previousResult, { fetchMoreResult }) => {
             const newEntries = fetchMoreResult.pokemons.edges
-            return {
-              pokemons: { edges: [...previousResult.pokemons.edges, ...newEntries] },
-            }
+            const oldEntries = previousResult.pokemons.edges
+            return { pokemons: { edges: [...oldEntries, ...newEntries] } }
           },
-
           variables: { offset: data?.pokemons.edges.length },
         })
       }
@@ -77,6 +75,13 @@ export const PokemonListView = () => {
     })
   }, [filter, refetch])
 
+  const handleTabChange = useCallback(
+    (choice: PokemonFilterType) => (_e: React.SyntheticEvent) => {
+      refetch({ filter: { isFavorite: choice === PokemonFilterType.FAVORITES } })
+    },
+    [refetch],
+  )
+
   return (
     <>
       {/* Would've handled this one better in real-world app 🤞 */}
@@ -102,10 +107,12 @@ export const PokemonListView = () => {
 
           <div className={styles.PokemonContainer}>
             <div>
-              <Tabs onChange={() => {}}>
+              <Tabs>
                 <TabList aria-label={TEXT.filters.pokemon.aria.tabList} contained>
                   {FILTER_TYPE_OPTIONS.map((value) => (
-                    <Tab key={value}>{TEXT.filters.pokemon.tabs[value]}</Tab>
+                    <Tab key={value} onClick={handleTabChange(value)}>
+                      {TEXT.filters.pokemon.tabs[value]}
+                    </Tab>
                   ))}
                 </TabList>
               </Tabs>
