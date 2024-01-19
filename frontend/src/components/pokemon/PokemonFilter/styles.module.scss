@@ -29,7 +29,7 @@
 
 .Form {
   display: flex;
-  gap: layout.$spacing-06;
+  gap: layout.$spacing-04;
   flex-direction: column;
 
   @include grid.breakpoint-up('md', $breakpoints: grid.$grid-breakpoints) {
@@ -49,15 +49,21 @@
 
 // Inputs
 .Input {
-  &--search {
+  &.search {
     flex: 2 0 auto;
   }
 
-  &--type {
+  &.type {
     flex: 1 0 auto;
   }
 
-  &--view {
+  &.view,
+  &.reset {
     flex: 0 0 auto;
   }
+}
+
+.cds--label+.cds--tooltip {
+  inset-block-start: 0 !important;
+  inset-inline-start: 0 !important;
 }

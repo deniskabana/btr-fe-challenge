@@ -15,6 +15,7 @@ const TEXT = {
         tabList: 'Pokemon Filter List',
       },
       filter: {
+        clear: 'Clear',
         search: 'Search',
         searchPlaceholder: 'Enter Pokemon name...',
         type: 'Type',

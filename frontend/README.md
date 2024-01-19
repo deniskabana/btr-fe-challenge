@@ -3,6 +3,7 @@
 ### Getting started
 
 Assumed `cwd` is in `./frontend` directory
+
 - Getting started
   - verify correct yarn version: `yarn --version # 4.0.2`
   - if you don't have yarn, install it: `npm i -g yarn`
@@ -18,7 +19,7 @@ Assumed `cwd` is in `./frontend` directory
 ### Pending work
 
 - **Important - Implement [gql error handling](https://www.apollographql.com/docs/apollo-server/data/errors/)**
-- Husky pipeline
+- Husky pipelines (not important tbh)
 
 ---
 
@@ -41,4 +42,5 @@ To test this application:
   - If I had the freedom to use REST API, I would use `@tanstack/query` and would implement `redux-persist` (or `localStorage` implementation) to allow for persisten caching, offline support and pre-loading. I would not use `WebWorkers`
 - Using `@carbon/react` for the first time, due to time constraints I didn't have time to make it proper UI - with theme switching, proper design and DX/UX based layout planning
   - In my own projects, I mostly use `@mui/material` v5.x or css modules
-- I hate myself for the regex I've written for scss classNames, but before I realized my fuck-up I already had way too much stuff going on. Technical debt, I guess 🤷‍♂️
+- I hate myself for the regex I've written for scss classNames, but before I realized my fuck-up I already had way too much stuff going on and chose to not refactor this.
+- Light and dark mode can be switched manually (with no support for remembering choices - like local/session storage) but **is derived from the client machine dark-mode preference**.

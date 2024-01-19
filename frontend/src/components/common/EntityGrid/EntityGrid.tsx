@@ -7,6 +7,7 @@ import {
   POKEMON_UNFAVORITE_MUTATION,
 } from '@/components/pokemon/PokemonLIstView/mutations'
 import { Button } from '@carbon/react'
+import Image from 'next/image'
 import styles from './styles.module.scss'
 
 // This type of entity is accepted in EntityGrid
@@ -35,12 +36,19 @@ export const EntityGrid = <Entity extends E = E>({ data }: { data: Entity[] }) =
         {data.map((entity) => (
           <div className={styles.GridItem} key={entity.id}>
             <Link as="button" href="#">
+              {/* TODO: ADD SHINE ANIMATION (METAL-LIKE) ON HOVER */}
               <div className={styles.Image}>
                 <div className={styles.ImageOverlay}>
                   {TEXT.pokemonList.overlay.viewDetail}
                 </div>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={entity.image} alt={entity.name} />
+                <Image
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  sizes="25rem"
+                  priority={true}
+                  src={entity.image}
+                  alt={entity.name}
+                />
               </div>
             </Link>
 

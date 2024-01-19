@@ -1,14 +1,19 @@
 import { useBrowserForm } from 'react-browser-form'
 import TEXT from '@/constants/TEXT'
 import { Form, TextInput, Select, SelectItem, Button, FormGroup } from '@carbon/react'
-import { Grid as GridIcon, List as ListIcon } from '@carbon/icons-react'
+import {
+  Grid as GridIcon,
+  List as ListIcon,
+  Delete as DeleteIcon,
+} from '@carbon/icons-react'
 import { CarbonIconType } from '@carbon/icons-react/lib/CarbonIcon'
 import { debounce } from '@/utils/debounce'
 import { useQuery } from '@apollo/client'
-import styles from './styles.module.scss'
+import { cx } from '@/utils/cx'
 import { FilterForm, POKEMON_TYPE_UNSET } from '../PokemonLIstView/forms'
 import { PokemonFilterType, PokemonViewOptions } from '../PokemonLIstView/types'
 import { GET_POKEMON_TYPES_QUERY } from '../PokemonLIstView/query'
+import styles from './styles.module.scss'
 
 // CONSTANTS
 // --------------------------------------------------
@@ -44,20 +49,20 @@ export const PokemonFilter = ({ filter, setFilter }: PokemonFilterProps) => {
   const { data } = useQuery(GET_POKEMON_TYPES_QUERY)
   const pokemonTypes = data?.pokemonTypes
 
-  const { formProps, names, setValues } = useBrowserForm<FilterForm>({
+  const { formProps, names, setValues, reset, isDirty } = useBrowserForm<FilterForm>({
     defaultValues: filter,
     mode: 'onChange',
     name: 'pokemon-filter',
     // Debounce by default
     // TODO: in production, handle UX state displaying (user needs a loading spinner and feedback for when data is loading)
-    onChange: debounce(setFilter, 250), // 250ms = barely humanly perceptible delay
+    onChange: debounce(setFilter, 200), // 150ms = is considered the lowest threshold for human perception
   })
 
   return (
     <div className={styles.PokemonFilter}>
-      <Form aria-label={TEXT.filters.pokemon.aria.search} {...formProps}>
+      <Form aria-label={TEXT.filters.pokemon.aria.label} {...formProps} role="form">
         <div className={styles.Form}>
-          <div className={styles['Input--view']}>
+          <div className={cx(styles.Input, styles.view)}>
             <FormGroup legendText={TEXT.filters.pokemon.viewTypeOptions.title}>
               <div className={styles.ButtonGroup}>
                 {VIEW_TYPE_OPTIONS.map((view) => (
@@ -78,7 +83,7 @@ export const PokemonFilter = ({ filter, setFilter }: PokemonFilterProps) => {
             </FormGroup>
           </div>
 
-          <div className={styles['Input--search']}>
+          <div className={cx(styles.Input, styles.search)}>
             <TextInput
               id={names.search}
               name={names.search}
@@ -87,7 +92,7 @@ export const PokemonFilter = ({ filter, setFilter }: PokemonFilterProps) => {
             />
           </div>
 
-          <div className={styles['Input--type']}>
+          <div className={cx(styles.Input, styles.type)}>
             <Select
               id={names.pokemonType}
               name={names.pokemonType}
@@ -102,6 +107,23 @@ export const PokemonFilter = ({ filter, setFilter }: PokemonFilterProps) => {
                 <SelectItem key={type} value={type} text={type} />
               ))}
             </Select>
+          </div>
+
+          <div className={cx(styles.Input, styles.reset)}>
+            <FormGroup legendText={TEXT.filters.pokemon.filter.clear}>
+              <div>
+                <Button
+                  hasIconOnly
+                  iconDescription={TEXT.filters.pokemon.filter.clear}
+                  aria-label={TEXT.filters.pokemon.filter.clear}
+                  size="md"
+                  disabled={!isDirty}
+                  onClick={() => reset()}
+                >
+                  <DeleteIcon />
+                </Button>
+              </div>
+            </FormGroup>
           </div>
         </div>
       </Form>

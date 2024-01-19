@@ -14,7 +14,6 @@ import { PokemonFilterType } from './types'
 import styles from './styles.module.scss'
 
 export const PokemonListView = () => {
-  const [tabIndex, setTabIndex] = useState(0)
   const { darkMode, toggleDarkMode } = useDarkTheme()
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_POKEMONS_QUERY)
   const [filter, setFilter] = useState<FilterForm>(filterFormDefaults)
@@ -32,8 +31,9 @@ export const PokemonListView = () => {
 
   /**
    * Infinite scroll
-   * @description For a second I considered using https://www.npmjs.com/package/react-infinite-scroll-component
-   * but then I realized this shit is trivial. My first implementation.
+   * My first ever implementation of this anti-UX pattern 😅
+   * PS: Didn't implement faux pagination to remember the last scroll position
+   * and last displayed Pokemons
    */
   useLayoutEffect(() => {
     // SSR protection
