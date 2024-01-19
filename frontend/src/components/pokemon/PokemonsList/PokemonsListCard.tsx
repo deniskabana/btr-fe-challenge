@@ -39,22 +39,22 @@ export const PokemonsListCard = ({
             <div className={styles.Types}>{entity.types?.join(', ') || <>&mdash;</>}</div>
           </div>
         </div>
-      </Link>
 
-      <Button
-        size="sm"
-        hasIconOnly
-        className={styles.FavoriteButton}
-        onClick={handleFavoriteClick}
-        iconDescription={
-          entity.isFavorite ? TEXT.favorites.unfavorite : TEXT.favorites.favorite
-        }
-        aria-label={
-          entity.isFavorite ? TEXT.favorites.unfavorite : TEXT.favorites.favorite
-        }
-      >
-        {entity.isFavorite ? <FavoriteFilled /> : <Favorite />}
-      </Button>
+        <Button
+          size="sm"
+          hasIconOnly
+          className={styles.FavoriteButton}
+          onClick={handleFavoriteClick}
+          iconDescription={
+            entity.isFavorite ? TEXT.favorites.unfavorite : TEXT.favorites.favorite
+          }
+          aria-label={
+            entity.isFavorite ? TEXT.favorites.unfavorite : TEXT.favorites.favorite
+          }
+        >
+          {entity.isFavorite ? <FavoriteFilled /> : <Favorite />}
+        </Button>
+      </Link>
     </div>
   )
 }

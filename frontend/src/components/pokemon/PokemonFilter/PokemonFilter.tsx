@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react'
 import { useBrowserForm } from 'react-browser-form'
 import TEXT from '@/constants/TEXT'
 import { Form, TextInput, Select, SelectItem, Button, FormGroup } from '@carbon/react'
@@ -41,7 +42,7 @@ export const VIEW_TYPE_OPTIONS: {
 
 export type PokemonFilterProps = {
   filter: FilterForm
-  setFilter: (filter: FilterForm) => void
+  setFilter: Dispatch<SetStateAction<FilterForm>>
 }
 
 export const PokemonFilter = ({ filter, setFilter }: PokemonFilterProps) => {
@@ -55,7 +56,10 @@ export const PokemonFilter = ({ filter, setFilter }: PokemonFilterProps) => {
     name: 'pokemon-filter',
     // Debounce by default
     // TODO: in production, handle UX state displaying (user needs a loading spinner and feedback for when data is loading)
-    onChange: debounce(setFilter, 200), // 150ms = is considered the lowest threshold for human perception
+    onChange: debounce(
+      (newValues) => setFilter((old) => ({ ...old, ...newValues })),
+      200,
+    ), // 150ms = is considered the lowest threshold for human perception
   })
 
   return (
@@ -70,7 +74,8 @@ export const PokemonFilter = ({ filter, setFilter }: PokemonFilterProps) => {
                     size="md"
                     kind={view.value === filter.viewType ? 'primary' : 'tertiary'}
                     key={view.value}
-                    onClick={() => setValues({ viewType: view.value })}
+                    // FIXME: This is a hack, but I don't have time to fix it now
+                    onClick={() => setValues({ ...filter, viewType: view.value })}
                     hasIconOnly
                     iconDescription={view.label}
                     aria-label={view.label}
@@ -96,6 +101,8 @@ export const PokemonFilter = ({ filter, setFilter }: PokemonFilterProps) => {
             <Select
               id={names.pokemonType}
               name={names.pokemonType}
+              value={filter.pokemonType}
+              onChange={(e) => setValues({ ...filter, pokemonType: e.target.value })}
               labelText={TEXT.filters.pokemon.filter.type}
               placeholder={TEXT.filters.pokemon.filter.typeAll}
             >

@@ -21,7 +21,8 @@ const TEXT = {
         type: 'Type',
         typeAll: 'All Types',
       },
-      noFavorites: 'You have no favorite pokemons yet. Time to add some! ❤️',
+      noFavorites:
+        'No Favorite Pokemons were found - try adjusting your criteria. Time to add some now! ❤️',
       noResults: 'No Pokemons were found 🥺 Try adjusting your criteria.',
       tabs: {
         all: 'All Pokemons',

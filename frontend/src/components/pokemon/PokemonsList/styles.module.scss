@@ -4,6 +4,12 @@
 @use '@carbon/colors';
 @import '@/styles/variables.scss';
 
+/**
+  * 💡 AUTHOR'S NOTE:
+  * - this file is a result of multiple iterations and refactors and I just stopped caring for the purpose of this demo
+  * - feel free to judge me by `../PokemongsGrid/styles.module.scss` instead, which I treated as a first-class citizen
+  */
+
 .EntityListView {
   padding: layout.$spacing-04 0 0;
 }
@@ -17,26 +23,31 @@
 
 .ListItem {
   display: flex;
-  padding: layout.$spacing-03;
   gap: layout.$spacing-04;
   flex: 1 0 100%;
-  border-radius: $border-radius-default;
-  border: 1px solid $border-color-lighter;
-  transition: all $transition-duration-default $transition-productive;
-  box-shadow: $box-shadow-mini;
   position: relative;
   align-items: center;
+  border-radius: $border-radius-default;
 
   a {
-    flex: 1 1 100%;
+    border-radius: $border-radius-default;
+    padding: layout.$spacing-03;
+    flex: 1 0 100%;
+    width: 100%;
     text-decoration: none;
     color: var(--cds-text-primary);
     display: flex;
     flex-direction: row;
     gap: layout.$spacing-04;
+    border: 1px solid $border-color-lighter;
+    transition: all $transition-duration-default $transition-productive;
+    box-shadow: $box-shadow-mini;
 
     &:hover,
     &:focus {
+      border-color: $color-secondary;
+      box-shadow: $box-shadow-default;
+
       .Name {
         text-decoration: underline;
       }
@@ -128,7 +139,6 @@
 .Name {
   @include type.type-style('heading-compact-02');
   color: $color-secondary !important;
-  margin-bottom: layout.$spacing-02;
 
   &:hover,
   &:focus {

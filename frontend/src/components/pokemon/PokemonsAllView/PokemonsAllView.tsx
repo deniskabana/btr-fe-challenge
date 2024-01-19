@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import TEXT from '@/constants/TEXT'
-import { Tabs, TabList, Tab, Loading, Button } from '@carbon/react'
+import { Tabs, TabList, Tab, Loading } from '@carbon/react'
 import { useDarkTheme } from '@/context/DarkThemeContext'
-import { AsleepFilled, DataEnrichment } from '@carbon/icons-react'
 import { debounce } from '@/utils/debounce'
 import { SCROLL_DEBOUNCE, SCROLL_THRESHOLD } from '@/constants/infiniteScroll'
+import { DarkModeToggleButton } from '@/components/common/DarkModeToggleButton/DarkModeToggleButton'
 import { FILTER_TYPE_OPTIONS, PokemonFilter } from '../PokemonFilter/PokemonFilter'
 import { GET_POKEMONS_QUERY } from '../query'
 import { FilterForm, POKEMON_TYPE_UNSET, filterFormDefaults } from '../forms'
@@ -21,21 +21,13 @@ export const PokemonAllView = () => {
 
   const pokemonData = data?.pokemons.edges
 
-  /**
-   * Error handling
-   */
   useEffect(() => {
     if (!loading && error) {
       // toast.error('Error 🥺')
     }
   }, [loading, error])
 
-  /**
-   * Infinite scroll
-   * My first ever implementation of this anti-UX pattern 😅
-   * PS: Didn't implement faux pagination to remember the last scroll position
-   * and last displayed Pokemons
-   */
+  // My first-ever infinite scroll implementation 🎉
   useLayoutEffect(() => {
     // SSR protection
     if (typeof window === 'undefined') return
@@ -59,11 +51,10 @@ export const PokemonAllView = () => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [data?.pokemons.edges.length, fetchMore])
 
-  /**
-   * Refetch upon filter change
-   */
   useEffect(() => {
+    // TODO: add a guard clause for when used filter values have not changed
     refetch({
+      // Since `filter` object is used as a form data object, here I had to "Cinderella" the values
       filter: {
         isFavorite: filter.isFavorite,
         type: filter.pokemonType === POKEMON_TYPE_UNSET ? undefined : filter.pokemonType,
@@ -86,16 +77,7 @@ export const PokemonAllView = () => {
 
       <div className={styles.Title}>
         <strong>{TEXT.filters.pokemon.title}</strong>
-        <Button
-          kind="secondary"
-          size="sm"
-          className={styles.Button}
-          onClick={toggleDarkMode}
-          aria-label={TEXT.ui.setDarkMode}
-          renderIcon={darkMode ? DataEnrichment : AsleepFilled}
-        >
-          {darkMode ? TEXT.ui.setLightMode : TEXT.ui.setDarkMode}
-        </Button>
+        <DarkModeToggleButton className={styles.Button} />
       </div>
 
       <PokemonFilter filter={filter} setFilter={setFilter} />
