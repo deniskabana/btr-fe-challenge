@@ -4,7 +4,8 @@ export const POKEMON_TYPE_UNSET = '__ALL_TYPES__'
 
 export const filterFormDefaults = {
   filterType: PokemonFilterType.ALL,
-  pokemonType: POKEMON_TYPE_UNSET, // Reserved keyword for "All Types"
+  isFavorite: false,
+  pokemonType: POKEMON_TYPE_UNSET,
   search: '',
   viewType: PokemonViewOptions.GRID,
 }

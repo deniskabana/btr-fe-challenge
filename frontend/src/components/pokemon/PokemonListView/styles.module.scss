@@ -1,5 +1,6 @@
 @use '@carbon/layout';
 @use '@carbon/type';
+@use '@carbon/colors';
 @import 'src/styles/variables';
 
 .Title {
@@ -25,4 +26,15 @@
   border-radius: $border-radius-default;
   background-color: $content-bg;
   box-shadow: $box-shadow-default;
+}
+
+.NoResults {
+  @include type.type-style('heading-compact-01');
+  margin: layout.$spacing-08 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color: $color-secondary;
 }
