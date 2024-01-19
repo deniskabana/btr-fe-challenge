@@ -1,3 +1,4 @@
+@use '@carbon/grid';
 @use '@carbon/layout';
 @use '@carbon/type';
 @use '@carbon/colors';
@@ -6,17 +7,26 @@
 .Title {
   display: flex;
   align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: layout.$spacing-04;
 
   strong {
     @include type.type-style('heading-04');
   }
+
+  @include grid.breakpoint-up('md', $breakpoints: grid.$grid-breakpoints) {
+    flex-direction: row;
+  }
 }
 
 .Button {
-  padding-left: layout.$spacing-04;
-  padding-right: layout.$spacing-08;
-  margin-left: auto;
-  margin-right: 0;
+  @include grid.breakpoint-up('md', $breakpoints: grid.$grid-breakpoints) {
+    padding-left: layout.$spacing-04;
+    padding-right: layout.$spacing-08;
+    margin-left: auto;
+    margin-right: 0;
+  }
 }
 
 .PokemonContainer {

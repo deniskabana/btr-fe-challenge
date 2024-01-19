@@ -11,12 +11,14 @@
   padding-top: $padding-dense;
   border-radius: $border-radius-default;
   box-shadow: $box-shadow-default;
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  backdrop-filter: blur(12px) saturate(140%);
-
   background-color: #{rgba(map-get(themes.$g10, layer-01), 0.85)};
+
+  @include grid.breakpoint-up('md', $breakpoints: grid.$grid-breakpoints) {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    backdrop-filter: blur(12px) saturate(140%);
+  }
 
   [data-dark-mode="true"] & {
     background-color: #{rgba(map-get(themes.$g100, layer-01), 0.9)};
