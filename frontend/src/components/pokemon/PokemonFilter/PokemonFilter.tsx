@@ -8,32 +8,31 @@ import {
   Delete as DeleteIcon,
 } from '@carbon/icons-react'
 import { CarbonIconType } from '@carbon/icons-react/lib/CarbonIcon'
-import { debounce } from '@/utils/debounce'
 import { useQuery } from '@apollo/client'
 import { cx } from '@/utils/cx'
 import { FilterForm, POKEMON_TYPE_UNSET } from '../forms'
-import { PokemonFilterType, PokemonViewOptions } from '../types'
+import { PokemonFavoritesDisplayOptions, PokemonDisplayOptions } from '../types'
 import { GET_POKEMON_TYPES_QUERY } from '../query'
 import styles from './styles.module.scss'
 
 // CONSTANTS
 // --------------------------------------------------
 
-export const FILTER_TYPE_OPTIONS = Object.values(PokemonFilterType)
+export const FILTER_TYPE_OPTIONS = Object.values(PokemonFavoritesDisplayOptions)
 export const VIEW_TYPE_OPTIONS: {
   icon: CarbonIconType
   label: string
-  value: PokemonViewOptions
+  value: PokemonDisplayOptions
 }[] = [
   {
     icon: GridIcon,
-    label: TEXT.filters.pokemon.viewTypeOptions[PokemonViewOptions.GRID],
-    value: PokemonViewOptions.GRID,
+    label: TEXT.filters.pokemon.viewTypeOptions[PokemonDisplayOptions.GRID],
+    value: PokemonDisplayOptions.GRID,
   },
   {
     icon: ListIcon,
-    label: TEXT.filters.pokemon.viewTypeOptions[PokemonViewOptions.LIST],
-    value: PokemonViewOptions.LIST,
+    label: TEXT.filters.pokemon.viewTypeOptions[PokemonDisplayOptions.LIST],
+    value: PokemonDisplayOptions.LIST,
   },
 ]
 
@@ -54,12 +53,9 @@ export const PokemonFilter = ({ filter, setFilter }: PokemonFilterProps) => {
     defaultValues: filter,
     mode: 'onChange',
     name: 'pokemon-filter',
-    // Debounce by default
     // TODO: in production, handle UX state displaying (user needs a loading spinner and feedback for when data is loading)
-    onChange: debounce(
-      (newValues) => setFilter((old) => ({ ...old, ...newValues })),
-      200,
-    ), // 150ms = is considered the lowest threshold for human perception
+    // Debounce by default
+    onChange: setFilter,
   })
 
   return (
@@ -69,12 +65,14 @@ export const PokemonFilter = ({ filter, setFilter }: PokemonFilterProps) => {
           <div className={cx(styles.Input, styles.view)}>
             <FormGroup legendText={TEXT.filters.pokemon.viewTypeOptions.title}>
               <div className={styles.ButtonGroup}>
+                {/* FIXME: I know this is overkill for a UI option that has no potential to change,
+                    I just included it to show how I would've handled this in e.g. a multi-tenant app with dynamic UI prefs */}
                 {VIEW_TYPE_OPTIONS.map((view) => (
                   <Button
                     size="md"
                     kind={view.value === filter.viewType ? 'primary' : 'tertiary'}
                     key={view.value}
-                    // FIXME: This is a hack, but I don't have time to fix it now
+                    // FIXME: This seems to be a problem in my own library, `react-browser-form`. Sorry for that, incl. in the roadmap now.
                     onClick={() => setValues({ ...filter, viewType: view.value })}
                     hasIconOnly
                     iconDescription={view.label}

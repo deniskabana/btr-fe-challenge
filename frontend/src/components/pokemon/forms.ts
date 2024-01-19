@@ -1,13 +1,12 @@
-import { PokemonFilterType, PokemonViewOptions } from './types'
+import { PokemonFavoritesDisplayOptions, PokemonDisplayOptions } from './types'
 
 export const POKEMON_TYPE_UNSET = '__ALL_TYPES__'
 
 export const filterFormDefaults = {
-  filterType: PokemonFilterType.ALL,
-  isFavorite: false,
+  filterType: PokemonFavoritesDisplayOptions.ALL,
   pokemonType: POKEMON_TYPE_UNSET,
   search: '',
-  viewType: PokemonViewOptions.GRID,
+  viewType: PokemonDisplayOptions.GRID,
 }
 
 export type FilterForm = typeof filterFormDefaults

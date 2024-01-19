@@ -2,22 +2,22 @@ import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import TEXT from '@/constants/TEXT'
 import { Tabs, TabList, Tab, Loading } from '@carbon/react'
-import { useDarkTheme } from '@/context/DarkThemeContext'
 import { debounce } from '@/utils/debounce'
 import { SCROLL_DEBOUNCE, SCROLL_THRESHOLD } from '@/constants/infiniteScroll'
 import { DarkModeToggleButton } from '@/components/common/DarkModeToggleButton/DarkModeToggleButton'
 import { FILTER_TYPE_OPTIONS, PokemonFilter } from '../PokemonFilter/PokemonFilter'
 import { GET_POKEMONS_QUERY } from '../query'
 import { FilterForm, POKEMON_TYPE_UNSET, filterFormDefaults } from '../forms'
-import { PokemonFilterType, PokemonViewOptions } from '../types'
+import { PokemonFavoritesDisplayOptions, PokemonDisplayOptions } from '../types'
 import { PokemonsGrid } from '../PokemonsGrid/PokemonsGrid'
 import styles from './styles.module.scss'
 import { PokemonsList } from '../PokemonsList/PokemonsList'
 
 export const PokemonAllView = () => {
-  const { darkMode, toggleDarkMode } = useDarkTheme()
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_POKEMONS_QUERY)
   const [filter, setFilter] = useState<FilterForm>(filterFormDefaults)
+  const [favoritesViewType, setFavoritesViewType] =
+    useState<PokemonFavoritesDisplayOptions>(PokemonFavoritesDisplayOptions.ALL)
 
   const pokemonData = data?.pokemons.edges
 
@@ -56,18 +56,18 @@ export const PokemonAllView = () => {
     refetch({
       // Since `filter` object is used as a form data object, here I had to "Cinderella" the values
       filter: {
-        isFavorite: filter.isFavorite,
+        isFavorite: favoritesViewType === PokemonFavoritesDisplayOptions.FAVORITES,
         type: filter.pokemonType === POKEMON_TYPE_UNSET ? undefined : filter.pokemonType,
       },
       search: filter.search || undefined,
     })
-  }, [filter, refetch])
+  }, [favoritesViewType, filter, refetch])
 
   const handleTabChange = useCallback(
-    (choice: PokemonFilterType) => (_e: React.SyntheticEvent) => {
-      setFilter({ ...filter, isFavorite: choice === PokemonFilterType.FAVORITES })
+    (choice: PokemonFavoritesDisplayOptions) => (_e: React.SyntheticEvent) => {
+      setFavoritesViewType(choice)
     },
-    [filter],
+    [],
   )
 
   return (
@@ -84,7 +84,9 @@ export const PokemonAllView = () => {
 
       <div className={styles.PokemonContainer}>
         <div>
-          <Tabs>
+          <Tabs
+            selectedIndex={FILTER_TYPE_OPTIONS.findIndex((a) => a === favoritesViewType)}
+          >
             <TabList aria-label={TEXT.filters.pokemon.aria.tabList} contained>
               {FILTER_TYPE_OPTIONS.map((value) => (
                 <Tab key={value} onClick={handleTabChange(value)}>
@@ -96,7 +98,7 @@ export const PokemonAllView = () => {
         </div>
 
         {pokemonData && pokemonData.length ? (
-          filter.viewType === PokemonViewOptions.GRID ? (
+          filter.viewType === PokemonDisplayOptions.GRID ? (
             <PokemonsGrid<(typeof pokemonData)[0]> data={data.pokemons.edges} />
           ) : (
             <PokemonsList<(typeof pokemonData)[0]> data={data.pokemons.edges} />
@@ -104,7 +106,7 @@ export const PokemonAllView = () => {
         ) : null}
         {!pokemonData?.length ? (
           <div className={styles.NoResults}>
-            {filter.isFavorite
+            {favoritesViewType === PokemonFavoritesDisplayOptions.FAVORITES
               ? TEXT.filters.pokemon.noFavorites
               : TEXT.filters.pokemon.noResults}
           </div>
