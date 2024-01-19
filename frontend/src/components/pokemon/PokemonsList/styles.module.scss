@@ -4,46 +4,39 @@
 @use '@carbon/colors';
 @import '@/styles/variables.scss';
 
-.EntityGridView {
+.EntityListView {
   padding: layout.$spacing-04 0 0;
 }
 
-.EntityGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
-  grid-gap: layout.$spacing-04;
-}
-
-.ItemWrapper {
-  position: relative;
-}
-
-.GridItem {
+.EntityList {
   display: flex;
   flex-direction: column;
-  padding: layout.$spacing-03;
-  padding-bottom: layout.$spacing-04;
   gap: layout.$spacing-04;
+  width: 100%;
+}
+
+.ListItem {
+  display: flex;
+  padding: layout.$spacing-03;
+  gap: layout.$spacing-04;
+  flex: 1 0 100%;
   border-radius: $border-radius-default;
   border: 1px solid $border-color-lighter;
   transition: all $transition-duration-default $transition-productive;
   box-shadow: $box-shadow-mini;
+  position: relative;
+  align-items: center;
 
   a {
+    flex: 1 1 100%;
     text-decoration: none;
     color: var(--cds-text-primary);
+    display: flex;
+    flex-direction: row;
+    gap: layout.$spacing-04;
 
     &:hover,
     &:focus {
-      img {
-        transform: scale3d(1.1, 1.1, 1.0);
-      }
-
-      .ImageOverlay {
-        opacity: 1;
-        backdrop-filter: blur(1px) saturate(30%);
-      }
-
       .Name {
         text-decoration: underline;
       }
@@ -53,7 +46,6 @@
   [data-dark-mode="true"] & {
     background: themes.$layer-02;
   }
-
 }
 
 .FavoriteButton {
@@ -82,8 +74,8 @@
 }
 
 .Image {
-  width: 100%;
-  height: 12rem;
+  width: 3rem;
+  height: 3rem;
   padding: layout.$spacing-04;
   background-color: white; // Those are JPEGs
   border-radius: $border-radius-default;
@@ -123,9 +115,10 @@
 }
 
 .MetaWrapper {
+  flex: 1 1 auto;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
 
   >*:first-child {
     flex-grow: 1;

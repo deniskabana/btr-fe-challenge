@@ -28,6 +28,7 @@ Assumed `cwd` is the `./frontend` directory
 - I **intentionally** chose to use BT's requested frameworks and tech, since I found it to be a fun little challenge to push myself. It worked, I had fun!
 - I use yarn@4.0.2 (stable) as my go-to package manager and Node.js v20.6.0 (stable)
 - I changed the default port from 3000 to 3091 on the frontend, so that it doesn't conflict with my other projects. This wouldn't have been done in a team environment.
+- My go-to structure in Next.js project is **feature-splitting**. Encapsulating and isolating most logic of a tuple in a single place.
 - In any real project, I would **always** end up with CSS-in-JS approach for it's flexible nature and DX/UX benefits. Sass modules do not offer any type safety or auto-completion.
 - Known bug: transition of button icons
 

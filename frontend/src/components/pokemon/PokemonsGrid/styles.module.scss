@@ -1,0 +1,148 @@
+@use '@carbon/layout';
+@use '@carbon/type';
+@use '@carbon/themes';
+@use '@carbon/colors';
+@import '@/styles/variables.scss';
+
+.EntityGridView {
+  padding: layout.$spacing-04 0 0;
+}
+
+.EntityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  grid-gap: layout.$spacing-04;
+}
+
+.ItemWrapper {
+  position: relative;
+}
+
+.GridItem {
+  display: flex;
+  flex-direction: column;
+  padding: layout.$spacing-03;
+  padding-bottom: layout.$spacing-04;
+  gap: layout.$spacing-04;
+  border-radius: $border-radius-default;
+  border: 1px solid $border-color-lighter;
+  transition: all $transition-duration-default $transition-productive;
+  box-shadow: $box-shadow-mini;
+
+  a {
+    text-decoration: none;
+    color: var(--cds-text-primary);
+
+    &:hover,
+    &:focus {
+      img {
+        transform: scale3d(1.05, 1.05, 1.0);
+      }
+
+      .ImageOverlay {
+        opacity: 1;
+        backdrop-filter: blur(1px) saturate(30%);
+      }
+
+      .Name {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  [data-dark-mode="true"] & {
+    background: themes.$layer-02;
+  }
+
+}
+
+.FavoriteButton {
+  $color: colors.$red-50;
+
+  padding-top: 0;
+  border: 1px solid $color !important;
+  display: flex;
+  align-items: center;
+  background-color: transparent !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $color;
+  }
+
+  svg {
+    width: 65%;
+    height: 65%;
+
+    * {
+      fill: $color;
+    }
+  }
+}
+
+.Image {
+  width: 100%;
+  height: 12rem;
+  padding: layout.$spacing-04;
+  background-color: white; // Those are JPEGs
+  border-radius: $border-radius-default;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale3d(1);
+    transition: all $transition-duration-slow $transition-expressive;
+  }
+}
+
+.ImageOverlay {
+  @include type.type-style('body-02');
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: $font-weight-semibold;
+  background-color: #{rgba(darken($color-secondary, 35%), 0.45)};
+  color: white;
+  pointer-events: none;
+  transition: all $transition-duration-default $transition-productive;
+  opacity: 0;
+  z-index: 1;
+
+  [data-dark-mode="true"] & {
+    background-color: #{rgba(darken($color-secondary, 55%), 0.65)};
+  }
+}
+
+.MetaWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  >*:first-child {
+    flex-grow: 1;
+  }
+}
+
+.Name {
+  @include type.type-style('heading-compact-02');
+  color: $color-secondary !important;
+  margin-bottom: layout.$spacing-02;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.Types {
+  @include type.type-style('body-compact-01');
+}

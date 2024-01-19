@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { PokemonListView } from '@/components/pokemon/PokemonLIstView/PokemonListView'
+import { PokemonAllView } from '@/components/pokemon/PokemonsAllView/PokemonsAllView'
 import TEXT from '@/constants/TEXT'
 import { ContainerGrid } from '@/components/common/ContainerGrid/ContainerGrid'
 
@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
       <main>
         <ContainerGrid>
-          <PokemonListView />
+          <PokemonAllView />
         </ContainerGrid>
       </main>
     </>

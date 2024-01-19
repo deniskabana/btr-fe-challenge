@@ -2,21 +2,21 @@ import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import TEXT from '@/constants/TEXT'
 import { Tabs, TabList, Tab, Loading, Button } from '@carbon/react'
-import { EntityGrid } from '@/components/common/EntityGrid/EntityGrid'
 import { useDarkTheme } from '@/context/DarkThemeContext'
 import { AsleepFilled, DataEnrichment } from '@carbon/icons-react'
 import { debounce } from '@/utils/debounce'
 import { SCROLL_DEBOUNCE, SCROLL_THRESHOLD } from '@/constants/infiniteScroll'
 import { FILTER_TYPE_OPTIONS, PokemonFilter } from '../PokemonFilter/PokemonFilter'
-import { GET_POKEMONS_QUERY } from './query'
-import { FilterForm, POKEMON_TYPE_UNSET, filterFormDefaults } from './forms'
-import { PokemonFilterType } from './types'
+import { GET_POKEMONS_QUERY } from '../query'
+import { FilterForm, POKEMON_TYPE_UNSET, filterFormDefaults } from '../forms'
+import { PokemonFilterType, PokemonViewOptions } from '../types'
+import { PokemonsGrid } from '../PokemonsGrid/PokemonsGrid'
 import styles from './styles.module.scss'
+import { PokemonsList } from '../PokemonsList/PokemonsList'
 
-export const PokemonListView = () => {
+export const PokemonAllView = () => {
   const { darkMode, toggleDarkMode } = useDarkTheme()
-  const { loading, error, data, refetch, fetchMore, networkStatus } =
-    useQuery(GET_POKEMONS_QUERY)
+  const { loading, error, data, refetch, fetchMore } = useQuery(GET_POKEMONS_QUERY)
   const [filter, setFilter] = useState<FilterForm>(filterFormDefaults)
 
   const pokemonData = data?.pokemons.edges
@@ -114,7 +114,11 @@ export const PokemonListView = () => {
         </div>
 
         {pokemonData && pokemonData.length ? (
-          <EntityGrid<(typeof pokemonData)[0]> data={data.pokemons.edges} />
+          filter.viewType === PokemonViewOptions.GRID ? (
+            <PokemonsGrid<(typeof pokemonData)[0]> data={data.pokemons.edges} />
+          ) : (
+            <PokemonsList<(typeof pokemonData)[0]> data={data.pokemons.edges} />
+          )
         ) : null}
         {!pokemonData?.length ? (
           <div className={styles.NoResults}>

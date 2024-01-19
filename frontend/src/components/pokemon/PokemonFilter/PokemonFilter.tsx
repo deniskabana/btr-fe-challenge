@@ -10,9 +10,9 @@ import { CarbonIconType } from '@carbon/icons-react/lib/CarbonIcon'
 import { debounce } from '@/utils/debounce'
 import { useQuery } from '@apollo/client'
 import { cx } from '@/utils/cx'
-import { FilterForm, POKEMON_TYPE_UNSET } from '../PokemonLIstView/forms'
-import { PokemonFilterType, PokemonViewOptions } from '../PokemonLIstView/types'
-import { GET_POKEMON_TYPES_QUERY } from '../PokemonLIstView/query'
+import { FilterForm, POKEMON_TYPE_UNSET } from '../forms'
+import { PokemonFilterType, PokemonViewOptions } from '../types'
+import { GET_POKEMON_TYPES_QUERY } from '../query'
 import styles from './styles.module.scss'
 
 // CONSTANTS
