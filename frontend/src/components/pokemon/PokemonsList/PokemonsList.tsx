@@ -14,9 +14,9 @@ export const PokemonsList = <Entity extends EntityDefault>({
   const handleFavoriteClick = useCallback(
     (entity: Entity) => () => {
       if (!entity.isFavorite) {
-        setFavorite({ variables: { pokemonId: entity.id } })
+        setFavorite(entity.id)
       } else {
-        setUnfavorite({ variables: { pokemonId: entity.id } })
+        setUnfavorite(entity.id)
       }
     },
     [setFavorite, setUnfavorite],

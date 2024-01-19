@@ -1,6 +1,7 @@
 import { ApolloProvider } from '@apollo/client'
 import { apollo } from '@/api/apollo'
 import { ThemeProvider } from '@/utils/ThemeProvider/ThemeProvider'
+import { Toaster } from 'react-hot-toast'
 
 /**
  * AppProvider
@@ -12,7 +13,10 @@ export const AppProvider = ({ children }: { children: React.ReactNode }): JSX.El
   return (
     <>
       <ApolloProvider client={apollo}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <Toaster />
+          {children}
+        </ThemeProvider>
       </ApolloProvider>
     </>
   )

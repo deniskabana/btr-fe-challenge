@@ -5,6 +5,14 @@ const TEXT = {
   favorites: {
     empty: 'You have no favorite Pokemons. Time to add some!',
     favorite: 'Add to Favorites',
+    toasts: {
+      setError: 'Failed to add to Favorites.',
+      setPending: 'Adding to Favorites...',
+      setSuccess: 'Added to Favorites!',
+      unsetError: 'Failed to remove from Favorites.',
+      unsetPending: 'Removing from Favorites...',
+      unsetSuccess: 'Removed from Favorites!',
+    },
     unfavorite: 'Remove from Favorites',
   },
   filters: {
