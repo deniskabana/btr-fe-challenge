@@ -17,7 +17,7 @@
   --cds-border-interactive: #{$clr-focus} !important;
 }
 
-*:not(div):not(svg),
+*:not(div, svg),
 .cds--btn,
 .cds--btn__icon {
   transition: $transition-duration-default $transition-expressive;
@@ -72,11 +72,13 @@ main {
   --cds-button-primary-hover: #{$color-primary-dark};
   --cds-button-primary-active: #{$color-primary-dark};
   --cds-button-primary-focus: #{$color-primary-dark};
+
   // Secondary
   --cds-button-secondary: #{$color-secondary};
   --cds-button-secondary-hover: #{$color-secondary-dark};
   --cds-button-secondary-active: #{$color-secondary-dark};
   --cds-button-secondary-focus: #{$color-secondary-dark};
+
   // Tertiary
   --cds-button-tertiary: #{$color-primary};
   --cds-button-tertiary-hover: #{$color-primary-dark};

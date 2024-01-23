@@ -2,7 +2,7 @@
 @use '@carbon/type';
 @use '@carbon/themes';
 @use '@carbon/colors';
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
 
 .EntityGridView {
   padding: layout.$spacing-04 0 0;
@@ -36,7 +36,7 @@
     &:hover,
     &:focus {
       img {
-        transform: scale3d(1.05, 1.05, 1.0);
+        transform: scale3d(1.05, 1.05, 1);
       }
 
       .ImageOverlay {
@@ -50,10 +50,9 @@
     }
   }
 
-  [data-dark-mode="true"] & {
+  [data-dark-mode='true'] & {
     background: themes.$layer-02;
   }
-
 }
 
 .FavoriteButton {
@@ -101,11 +100,9 @@
 
 .ImageOverlay {
   @include type.type-style('body-02');
+
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,7 +114,7 @@
   opacity: 0;
   z-index: 1;
 
-  [data-dark-mode="true"] & {
+  [data-dark-mode='true'] & {
     background-color: #{rgba(darken($color-secondary, 35%), 0.65)};
   }
 }
@@ -127,13 +124,14 @@
   justify-content: flex-start;
   align-items: flex-start;
 
-  >*:first-child {
+  > *:first-child {
     flex-grow: 1;
   }
 }
 
 .Name {
   @include type.type-style('heading-compact-02');
+
   color: $color-secondary !important;
   margin-bottom: layout.$spacing-02;
 

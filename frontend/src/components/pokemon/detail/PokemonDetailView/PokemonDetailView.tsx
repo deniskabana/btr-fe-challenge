@@ -3,11 +3,11 @@ import { useQuery } from '@apollo/client'
 import { Loading } from '@carbon/react'
 import toast from 'react-hot-toast'
 import TEXT from '@/config/TEXT'
-import { GET_POKEMON_BY_NAME_QUERY } from '../../query'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
-import { PokemonDetailCard } from '../PokemonDetailCard/PokemonDetailCard'
 import { Pokemon } from '@/__generated__/graphql'
 import { BreadcumbBackBtn } from '@/components/common/BreadcrumbBackBtn/BreadcrumbBackBtn'
+import { PokemonDetailCard } from '../PokemonDetailCard/PokemonDetailCard'
+import { GET_POKEMON_BY_NAME_QUERY } from '../../query'
 
 export type PokemonDetailViewProps = {
   name: string
@@ -21,6 +21,7 @@ export const PokemonDetailView = ({ name }: PokemonDetailViewProps) => {
 
   useEffect(() => {
     if (loading) return
+
     if (error) toast.error(TEXT.filters.pokemon.toasts.error)
   }, [error, loading])
 

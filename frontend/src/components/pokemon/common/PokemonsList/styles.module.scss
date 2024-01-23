@@ -2,7 +2,7 @@
 @use '@carbon/type';
 @use '@carbon/themes';
 @use '@carbon/colors';
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
 
 /**
   * 💡 AUTHOR'S NOTE:
@@ -54,7 +54,7 @@
     }
   }
 
-  [data-dark-mode="true"] & {
+  [data-dark-mode='true'] & {
     background: themes.$layer-02;
   }
 }
@@ -104,11 +104,9 @@
 
 .ImageOverlay {
   @include type.type-style('body-02');
+
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,7 +118,7 @@
   opacity: 0;
   z-index: 1;
 
-  [data-dark-mode="true"] & {
+  [data-dark-mode='true'] & {
     background-color: #{rgba(darken($color-secondary, 55%), 0.65)};
   }
 }
@@ -138,6 +136,7 @@
 
 .Name {
   @include type.type-style('heading-compact-02');
+
   color: $color-secondary !important;
 
   &:hover,

@@ -5,11 +5,11 @@ const nextConfig = {
       {
         hostname: 'img.pokemondb.net',
         port: '',
-        protocol: 'https'
-      }
-    ]
+        protocol: 'https',
+      },
+    ],
   },
-  reactStrictMode: true
+  reactStrictMode: true,
 }
 
 module.exports = nextConfig

@@ -1,12 +1,9 @@
 module.exports = {
-  extends: "stylelint-config-standard-scss",
+  fix: true,
+  extends: ['stylelint-config-standard-scss', 'stylelint-prettier/recommended'],
   rules: {
-    "selector-class-pattern": [
-      "^[A-Z][a-zA-Z0-9]+(__|--)?[A-Za-z]+$",
-      {
-        resolveNestedSelectors: true,
-        message: "Use UpperPascalCase and BEM only 🚫"
-      }
-    ]
-  }
+    // 'prettier/prettier': false,
+    'selector-class-pattern': '^[a-zA-Z][a-zA-Z0-9-_]+$',
+    'selector-id-pattern': false,
+  },
 }

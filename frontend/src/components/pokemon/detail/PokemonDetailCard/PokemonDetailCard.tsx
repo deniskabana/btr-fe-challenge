@@ -10,9 +10,9 @@ import {
 } from '@carbon/icons-react'
 import { ProgressBar } from '@carbon/react'
 import { Pokemon } from '@/__generated__/graphql'
+import TEXT from '@/config/TEXT'
 import styles from './styles.module.scss'
 import { PokemonsGridCard } from '../../common/PokemonsGrid/PokemonsGridCard'
-import TEXT from '@/config/TEXT'
 
 export type PokemonDetailCardProps = {
   // Fuck statically typing TS+GQL :(

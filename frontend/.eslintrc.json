@@ -18,16 +18,40 @@
     "typescript-sort-keys",
     "unused-imports"
   ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "createDefaultProgram": true,
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
   "rules": {
     "linebreak-style": ["error", "unix"],
-    "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
-    "quotes": ["warn", "single", { "allowTemplateLiterals": true, "avoidEscape": true }],
+    "no-console": [
+      "warn",
+      {
+        "allow": ["warn", "error", "info"]
+      }
+    ],
+    "quotes": [
+      "warn",
+      "single",
+      {
+        "allowTemplateLiterals": true,
+        "avoidEscape": true
+      }
+    ],
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react/jsx-curly-brace-presence": "warn",
     "react/jsx-uses-react": "off",
     "react/no-array-index-key": "warn",
-    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+    "react/no-unknown-property": [
+      "error",
+      {
+        "ignore": ["css"]
+      }
+    ],
     "react/react-in-jsx-scope": "off",
     "semi": ["error", "never"],
     "spaced-comment": "warn",
@@ -43,10 +67,15 @@
         "argsIgnorePattern": "^_",
         "vars": "all",
         "varsIgnorePattern": "^_",
-        "ignoreRestSiblings": true,
-      },
+        "ignoreRestSiblings": true
+      }
     ],
-    "@typescript-eslint/no-empty-function": ["warn", { "allow": ["arrowFunctions"] }],
+    "@typescript-eslint/no-empty-function": [
+      "warn",
+      {
+        "allow": ["arrowFunctions"]
+      }
+    ],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "import/no-duplicates": "error",
@@ -55,27 +84,48 @@
       {
         "groups": [["builtin", "external", "internal"]],
         "pathGroups": [
-          { "group": "external", "pattern": "react", "position": "before" },
+          {
+            "group": "external",
+            "pattern": "react",
+            "position": "before"
+          },
           {
             "group": "external",
             "pattern": "@mui/material",
-            "position": "before",
+            "position": "before"
           },
           {
             "group": "external",
             "pattern": "@mui/material/**",
-            "position": "before",
-          },
+            "position": "before"
+          }
         ],
-        "pathGroupsExcludedImportTypes": ["builtin"],
-      },
-    ],
+        "pathGroupsExcludedImportTypes": ["builtin"]
+      }
+    ]
   },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "createDefaultProgram": true,
-    "ecmaFeatures": { "jsx": true },
-    "ecmaVersion": "latest",
-    "sourceType": "module",
-  },
+  "overrides": [
+    {
+      // for files matching this pattern
+      "files": ["*.json"],
+      // following config will override "normal" config
+      "extends": ["plugin:json/recommended"],
+      "parser": "jsonc-parser",
+      "rules": {
+        "*/*": "off",
+        "json/json": ["error", "allowComments"]
+      }
+    },
+    {
+      // for files matching this pattern
+      "files": ["*.s?css"],
+      // following config will override "normal" config
+      "extends": ["stylelint"],
+      "parser": "jsonc-parser",
+      "rules": {
+        "*/*": "off",
+        "json/json": ["error", "allowComments"]
+      }
+    }
+  ]
 }

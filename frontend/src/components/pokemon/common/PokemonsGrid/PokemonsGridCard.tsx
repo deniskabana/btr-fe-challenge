@@ -3,9 +3,9 @@ import { FavoriteFilled, Favorite } from '@carbon/icons-react'
 import { Button } from '@carbon/react'
 import Image from 'next/image'
 import TEXT from '@/config/TEXT'
+import { getPokemonDetailUrl } from '@/utils/getPokemonDetailUrl'
 import styles from './styles.module.scss'
 import { EntityDefault } from '../../types'
-import { getPokemonDetailUrl } from '@/utils/getPokemonDetailUrl'
 
 export type PokemonsGridCardProps = {
   entity: EntityDefault

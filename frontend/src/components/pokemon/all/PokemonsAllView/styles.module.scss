@@ -4,7 +4,6 @@
 @use '@carbon/colors';
 @import 'src/styles/variables';
 
-
 .PokemonContainer {
   display: flex;
   flex-direction: column;
@@ -16,6 +15,7 @@
 
 .NoResults {
   @include type.type-style('heading-compact-01');
+
   margin: layout.$spacing-08 auto;
   display: flex;
   justify-content: center;

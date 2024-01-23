@@ -20,7 +20,7 @@
     backdrop-filter: blur(12px) saturate(140%);
   }
 
-  [data-dark-mode="true"] & {
+  [data-dark-mode='true'] & {
     background-color: #{rgba(map-get(themes.$g100, layer-01), 0.9)};
   }
 }
@@ -65,7 +65,7 @@
   }
 }
 
-.cds--label+.cds--tooltip {
+.cds--label + .cds--tooltip {
   inset-block-start: 0 !important;
   inset-inline-start: 0 !important;
 }
