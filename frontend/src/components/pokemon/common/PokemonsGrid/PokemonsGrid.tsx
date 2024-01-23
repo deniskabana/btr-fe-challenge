@@ -2,8 +2,8 @@ import { useCallback } from 'react'
 
 import styles from './styles.module.scss'
 import { PokemonsGridCard } from './PokemonsGridCard'
-import { EntityDefault } from '../types'
-import { usePokemonFavoriteMutations } from '../hooks'
+import { EntityDefault } from '../../types'
+import { usePokemonFavoriteMutations } from '../../hooks'
 
 export const PokemonsGrid = <Entity extends EntityDefault>({
   data,

@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import TEXT from '@/constants/TEXT'
+import TEXT from '@/config/TEXT'
 import { ContainerGrid } from '@/components/common/ContainerGrid/ContainerGrid'
-import { PokemonDetailView } from '@/components/pokemon/PokemonDetailView/PokemonDetailView'
+import { PokemonDetailView } from '@/components/pokemon/detail/PokemonDetailView/PokemonDetailView'
 import { useRouter } from 'next/router'
 
 export default function Page() {

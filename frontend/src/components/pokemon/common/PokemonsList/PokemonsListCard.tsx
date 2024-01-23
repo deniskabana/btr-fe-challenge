@@ -1,24 +1,23 @@
+import TEXT from '@/config/TEXT'
 import Link from 'next/link'
 import { FavoriteFilled, Favorite } from '@carbon/icons-react'
 import { Button } from '@carbon/react'
 import Image from 'next/image'
-import TEXT from '@/constants/TEXT'
 import styles from './styles.module.scss'
-import { EntityDefault } from '../types'
-import { getPokemonDetailUrl } from '@/utils/getPokemonDetailUrl'
+import { EntityDefault } from '../../types'
 
-export type PokemonsGridCardProps = {
+export type PokemonsListCardProps = {
   entity: EntityDefault
   handleFavoriteClick: VoidFunction
 }
 
-export const PokemonsGridCard = ({
+export const PokemonsListCard = ({
   entity,
   handleFavoriteClick,
-}: PokemonsGridCardProps) => {
+}: PokemonsListCardProps) => {
   return (
-    <div className={styles.GridItem}>
-      <Link href={getPokemonDetailUrl(entity.name)}>
+    <div className={styles.ListItem}>
+      <Link href={`/${encodeURI(entity.name)}`}>
         {/* TODO: ADD SHINE ANIMATION (METAL-LIKE) ON HOVER */}
         <div className={styles.Image}>
           <div className={styles.ImageOverlay}>{TEXT.pokemonCard.overlay.viewDetail}</div>
@@ -31,18 +30,14 @@ export const PokemonsGridCard = ({
             alt={entity.name}
           />
         </div>
-      </Link>
 
-      <div className={styles.MetaWrapper}>
-        <div>
-          <Link
-            href={getPokemonDetailUrl(entity.name)}
-            className={styles.Name}
-            tabIndex={-1}
-          >
-            {entity.name}
-          </Link>
-          <div className={styles.Types}>{entity.types?.join(', ') || <>&mdash;</>}</div>
+        <div className={styles.MetaWrapper}>
+          <div>
+            <div className={styles.Name} tabIndex={-1}>
+              {entity.name}
+            </div>
+            <div className={styles.Types}>{entity.types?.join(', ') || <>&mdash;</>}</div>
+          </div>
         </div>
 
         <Button
@@ -59,7 +54,7 @@ export const PokemonsGridCard = ({
         >
           {entity.isFavorite ? <FavoriteFilled /> : <Favorite />}
         </Button>
-      </div>
+      </Link>
     </div>
   )
 }

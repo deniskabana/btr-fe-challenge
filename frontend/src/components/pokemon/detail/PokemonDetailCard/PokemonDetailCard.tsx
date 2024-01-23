@@ -11,8 +11,8 @@ import {
 import { ProgressBar } from '@carbon/react'
 import { Pokemon } from '@/__generated__/graphql'
 import styles from './styles.module.scss'
-import { PokemonsGridCard } from '../PokemonsGrid/PokemonsGridCard'
-import TEXT from '@/constants/TEXT'
+import { PokemonsGridCard } from '../../common/PokemonsGrid/PokemonsGridCard'
+import TEXT from '@/config/TEXT'
 
 export type PokemonDetailCardProps = {
   // Fuck statically typing TS+GQL :(

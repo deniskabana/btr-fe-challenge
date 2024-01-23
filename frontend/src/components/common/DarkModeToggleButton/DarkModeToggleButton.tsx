@@ -1,4 +1,4 @@
-import TEXT from '@/constants/TEXT'
+import TEXT from '@/config/TEXT'
 import { useDarkTheme } from '@/context/DarkThemeContext'
 import { DataEnrichment, AsleepFilled } from '@carbon/icons-react'
 import { Button } from '@carbon/react'

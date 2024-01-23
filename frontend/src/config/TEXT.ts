@@ -80,6 +80,6 @@ const TEXT = {
     setDarkMode: 'Dark Mode',
     setLightMode: 'Light Mode',
   },
-}
+} as const
 
-export default TEXT
+export default Object.freeze(TEXT)

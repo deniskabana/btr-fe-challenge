@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client'
 import toast from 'react-hot-toast'
-import TEXT from '@/constants/TEXT'
+import TEXT from '@/config/TEXT'
 import { POKEMON_FAVORITE_MUTATION, POKEMON_UNFAVORITE_MUTATION } from './mutations'
 
 export const usePokemonFavoriteMutations = () => {

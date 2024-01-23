@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
 import { useBrowserForm } from 'react-browser-form'
-import TEXT from '@/constants/TEXT'
 import { Form, TextInput, Select, SelectItem, Button, FormGroup } from '@carbon/react'
 import {
   Grid as GridIcon,
@@ -9,10 +8,11 @@ import {
 } from '@carbon/icons-react'
 import { CarbonIconType } from '@carbon/icons-react/lib/CarbonIcon'
 import { useQuery } from '@apollo/client'
+import TEXT from '@/config/TEXT'
 import { cx } from '@/utils/cx'
-import { FilterForm, POKEMON_TYPE_UNSET } from '../forms'
-import { PokemonFavoritesDisplayOptions, PokemonDisplayOptions } from '../types'
-import { GET_POKEMON_TYPES_QUERY } from '../query'
+import { FilterForm, POKEMON_TYPE_UNSET } from '../../forms'
+import { PokemonFavoritesDisplayOptions, PokemonDisplayOptions } from '../../types'
+import { GET_POKEMON_TYPES_QUERY } from '../../query'
 import styles from './styles.module.scss'
 
 // CONSTANTS
