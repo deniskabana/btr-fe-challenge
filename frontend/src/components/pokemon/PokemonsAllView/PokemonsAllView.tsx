@@ -4,7 +4,8 @@ import TEXT from '@/constants/TEXT'
 import { Tabs, TabList, Tab, Loading } from '@carbon/react'
 import { debounce } from '@/utils/debounce'
 import { SCROLL_DEBOUNCE, SCROLL_THRESHOLD } from '@/constants/infiniteScroll'
-import { DarkModeToggleButton } from '@/components/common/DarkModeToggleButton/DarkModeToggleButton'
+import toast from 'react-hot-toast'
+import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { FILTER_TYPE_OPTIONS, PokemonFilter } from '../PokemonFilter/PokemonFilter'
 import { GET_POKEMONS_QUERY } from '../query'
 import { FilterForm, POKEMON_TYPE_UNSET, filterFormDefaults } from '../forms'
@@ -13,23 +14,20 @@ import { PokemonsGrid } from '../PokemonsGrid/PokemonsGrid'
 import styles from './styles.module.scss'
 import { PokemonsList } from '../PokemonsList/PokemonsList'
 
-export const PokemonAllView = () => {
-  const { loading, error, data, refetch, fetchMore } = useQuery(GET_POKEMONS_QUERY)
+export const PokemonsAllView = () => {
   const [filter, setFilter] = useState<FilterForm>(filterFormDefaults)
   const [favoritesViewType, setFavoritesViewType] =
     useState<PokemonFavoritesDisplayOptions>(PokemonFavoritesDisplayOptions.ALL)
-
+  const { loading, error, data, refetch, fetchMore } = useQuery(GET_POKEMONS_QUERY)
   const pokemonData = data?.pokemons.edges
 
   useEffect(() => {
-    if (!loading && error) {
-      // toast.error('Error 🥺')
-    }
-  }, [loading, error])
+    if (loading) return
+    if (error) toast.error(TEXT.filters.pokemon.toasts.error)
+  }, [error, loading])
 
   // My first-ever infinite scroll implementation 🎉
   useLayoutEffect(() => {
-    // SSR protection
     if (typeof window === 'undefined') return
 
     const onScroll = debounce(() => {
@@ -72,13 +70,10 @@ export const PokemonAllView = () => {
 
   return (
     <>
-      {/* Would've handled this one better in real-world app 🤞 */}
-      {loading && <Loading withOverlay={false} />}
+      <PageTitle title={TEXT.filters.pokemon.title} />
 
-      <div className={styles.Title}>
-        <strong>{TEXT.filters.pokemon.title}</strong>
-        <DarkModeToggleButton className={styles.Button} />
-      </div>
+      {/* No skeletons this time, sorry carbon docs */}
+      {loading && <Loading withOverlay={true} />}
 
       <PokemonFilter filter={filter} setFilter={setFilter} />
 

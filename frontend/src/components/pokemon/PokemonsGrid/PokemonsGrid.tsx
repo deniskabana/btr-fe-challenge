@@ -23,6 +23,8 @@ export const PokemonsGrid = <Entity extends EntityDefault>({
     [setFavorite, setUnfavorite],
   )
 
+  // TODO: filter data by isFavorite if "My Favorites" view
+
   return (
     <div className={styles.EntityGridView}>
       <div className={styles.EntityGrid}>

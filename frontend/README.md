@@ -22,13 +22,14 @@ As it is with PoCs, prototypes and demo projects, I decided to cut some corners 
 
 - **Important [gql error handling](https://www.apollographql.com/docs/apollo-server/data/errors/)**
 - Modal for quick view of pokemon details
-  - This one is easy and I've done it many times. Would create a `uniModal` context and component (either Carbon's implementation or `createPortal`)
+  - This one is easy and I've done it many times. I would've created a `uniModal` context and component (either Carbon's implementation or `createPortal`) and created new query to get pokemonById with limited subset of data
   - Upon clicking a pokemon card, I would've dispatched an action to open the modal, fetch a tad bit more info about pokemon (so detail page doesn't lose purpose) and then just shown some extra data.
 - Husky pipelines (not important tbh)
 
 #### Known bugs
 
 - Button>Icon transitions are botched due to my pseudo-successful attempt to override Carbon's default theme (this turned out to be a fucking nightmare)
+- _Backend bug_ - when retrieving Pokemon by name, requesting `evolutions` should return `[Pokemon!]!`, but it returns a limited subset (**not documented**). This means `pokemonByName("Bulbasaur") { evolutions { types } }` throws 500.
 
 ---
 
@@ -39,6 +40,7 @@ As it is with PoCs, prototypes and demo projects, I decided to cut some corners 
 - I changed the default port from 3000 to 3091 on the frontend, so that it doesn't conflict with my other projects. This wouldn't have been done so abruptly in a team environment.
 - My go-to structure in Next.js project is **feature-splitting**. Encapsulating and isolating most logic of a tuple in a single place (e.g. `@/src/components/pokemon/*`)
 - In a real project, I would personally end up using CSS-in-JS approach for it's flexible nature and DX/UX benefits. Sass modules do not offer any type safety or auto-completion and using it feels very 2012 - or I just haven't found those since it's my first time using Sass in **years**. Wasn't suicide inducing, actually. In contrast with some other methodologies...
+- Using a simple context as `AppState` instead of implementing Redux - size of the app does not require complex state management.
 
 ---
 

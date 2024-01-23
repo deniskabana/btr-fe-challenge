@@ -17,7 +17,7 @@ export const PokemonsListCard = ({
 }: PokemonsListCardProps) => {
   return (
     <div className={styles.ListItem}>
-      <Link href="#">
+      <Link href={`/${encodeURI(entity.name)}`}>
         {/* TODO: ADD SHINE ANIMATION (METAL-LIKE) ON HOVER */}
         <div className={styles.Image}>
           <div className={styles.ImageOverlay}>{TEXT.pokemonList.overlay.viewDetail}</div>

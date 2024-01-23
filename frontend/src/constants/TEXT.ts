@@ -37,6 +37,10 @@ const TEXT = {
         favorites: 'My Favorites',
       },
       title: 'Browse Pokemons',
+      toasts: {
+        error: 'Failed to load Pokemons 😱',
+        singleError: 'Failed to load Pokemon detail 🥺',
+      },
       viewTypeOptions: {
         grid: 'Grid',
         list: 'List',

@@ -1,10 +1,11 @@
-import TEXT from '@/constants/TEXT'
 import Link from 'next/link'
 import { FavoriteFilled, Favorite } from '@carbon/icons-react'
 import { Button } from '@carbon/react'
 import Image from 'next/image'
+import TEXT from '@/constants/TEXT'
 import styles from './styles.module.scss'
 import { EntityDefault } from '../types'
+import { getPokemonDetailUrl } from '@/utils/getPokemonDetailUrl'
 
 export type PokemonsGridCardProps = {
   entity: EntityDefault
@@ -17,7 +18,7 @@ export const PokemonsGridCard = ({
 }: PokemonsGridCardProps) => {
   return (
     <div className={styles.GridItem}>
-      <Link href="#">
+      <Link href={getPokemonDetailUrl(entity.name)}>
         {/* TODO: ADD SHINE ANIMATION (METAL-LIKE) ON HOVER */}
         <div className={styles.Image}>
           <div className={styles.ImageOverlay}>{TEXT.pokemonList.overlay.viewDetail}</div>
@@ -34,7 +35,11 @@ export const PokemonsGridCard = ({
 
       <div className={styles.MetaWrapper}>
         <div>
-          <Link href="#" className={styles.Name} tabIndex={-1}>
+          <Link
+            href={getPokemonDetailUrl(entity.name)}
+            className={styles.Name}
+            tabIndex={-1}
+          >
             {entity.name}
           </Link>
           <div className={styles.Types}>{entity.types?.join(', ') || <>&mdash;</>}</div>
