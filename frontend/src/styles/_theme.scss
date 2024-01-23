@@ -2,6 +2,11 @@
 
 // GLOBAL THEME SETTINGS ATTEMPT
 
+.cds--text-input,
+.cds--select-input {
+  background-color: transparent;
+}
+
 .cds--text-input:focus,
 .cds--text-input:active,
 .cds--select-input:focus,
@@ -34,12 +39,6 @@ body,
 
 main {
   background-color: $bg;
-}
-
-// INPUT AND SELECT
-.cds--text-input,
-.cds--select-input {
-  background-color: transparent;
 }
 
 // TABS

@@ -18,6 +18,57 @@
   position: relative;
 }
 
+.Image {
+  width: 100%;
+  height: 12rem;
+  padding: layout.$spacing-04;
+  background-color: white; // Those are JPEGs
+  border-radius: $border-radius-default;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale3d(1);
+    transition: all $transition-duration-slow $transition-expressive;
+  }
+}
+
+.ImageOverlay {
+  @include type.type-style('body-02');
+
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: $font-weight-semibold;
+  background-color: #{rgba(darken($color-secondary, 5%), 0.55)};
+  color: white;
+  pointer-events: none;
+  transition: all $transition-duration-default $transition-productive;
+  opacity: 0;
+  z-index: 1;
+
+  [data-dark-mode='true'] & {
+    background-color: #{rgba(darken($color-secondary, 35%), 0.65)};
+  }
+}
+
+.Name {
+  @include type.type-style('heading-compact-02');
+
+  color: $color-secondary !important;
+  margin-bottom: layout.$spacing-02;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
 .GridItem {
   display: flex;
   flex-direction: column;
@@ -80,45 +131,6 @@
   }
 }
 
-.Image {
-  width: 100%;
-  height: 12rem;
-  padding: layout.$spacing-04;
-  background-color: white; // Those are JPEGs
-  border-radius: $border-radius-default;
-  overflow: hidden;
-  position: relative;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transform: scale3d(1);
-    transition: all $transition-duration-slow $transition-expressive;
-  }
-}
-
-.ImageOverlay {
-  @include type.type-style('body-02');
-
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: $font-weight-semibold;
-  background-color: #{rgba(darken($color-secondary, 5%), 0.55)};
-  color: white;
-  pointer-events: none;
-  transition: all $transition-duration-default $transition-productive;
-  opacity: 0;
-  z-index: 1;
-
-  [data-dark-mode='true'] & {
-    background-color: #{rgba(darken($color-secondary, 35%), 0.65)};
-  }
-}
-
 .MetaWrapper {
   display: flex;
   justify-content: flex-start;
@@ -126,18 +138,6 @@
 
   > *:first-child {
     flex-grow: 1;
-  }
-}
-
-.Name {
-  @include type.type-style('heading-compact-02');
-
-  color: $color-secondary !important;
-  margin-bottom: layout.$spacing-02;
-
-  &:hover,
-  &:focus {
-    text-decoration: underline;
   }
 }
 

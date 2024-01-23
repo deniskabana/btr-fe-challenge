@@ -21,6 +21,17 @@
   width: 100%;
 }
 
+.Name {
+  @include type.type-style('heading-compact-02');
+
+  color: $color-secondary !important;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
 .ListItem {
   display: flex;
   gap: layout.$spacing-04;
@@ -129,19 +140,8 @@
   justify-content: flex-start;
   align-items: center;
 
-  >*:first-child {
+  > *:first-child {
     flex-grow: 1;
-  }
-}
-
-.Name {
-  @include type.type-style('heading-compact-02');
-
-  color: $color-secondary !important;
-
-  &:hover,
-  &:focus {
-    text-decoration: underline;
   }
 }
 

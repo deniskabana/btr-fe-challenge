@@ -18,7 +18,7 @@
   height: 27.5rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: ceter;
   position: relative;
   background: white;
   border-radius: $border-radius-default;
@@ -33,6 +33,14 @@
 .MetaWrapper {
   flex: 1 0 auto;
   padding: layout.$spacing-04;
+
+  .test {
+    .children {
+      display: flex;
+      flex-wrap: wrap;
+      gap: layout.$spacing-04;
+    }
+  }
 }
 
 .EvolutionsWrapper {

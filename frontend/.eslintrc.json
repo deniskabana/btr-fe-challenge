@@ -21,7 +21,9 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "createDefaultProgram": true,
-    "ecmaFeatures": { "jsx": true },
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
@@ -110,17 +112,6 @@
       "files": ["*.json"],
       // following config will override "normal" config
       "extends": ["plugin:json/recommended"],
-      "parser": "jsonc-parser",
-      "rules": {
-        "*/*": "off",
-        "json/json": ["error", "allowComments"]
-      }
-    },
-    {
-      // for files matching this pattern
-      "files": ["*.s?css"],
-      // following config will override "normal" config
-      "extends": ["stylelint"],
       "parser": "jsonc-parser",
       "rules": {
         "*/*": "off",

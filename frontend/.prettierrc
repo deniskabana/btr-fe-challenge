@@ -3,18 +3,12 @@
   "singleQuote": true,
   "tabWidth": 2,
   "printWidth": 90,
-  "trailingComma": "es5",
+  "trailingComma": "all",
   "overrides": [
-    {
-      "files": "*.s?css",
-      "options": {
-        "parser": "stylelint"
-      }
-    },
     {
       "files": "*.json",
       "options": {
-        "parser": "json"
+        "trailingComma": "none"
       }
     }
   ]
