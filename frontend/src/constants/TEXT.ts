@@ -2,6 +2,26 @@
 // in using i18n for this project.
 
 const TEXT = {
+  details: {
+    pokemon: {
+      card: {
+        classification: 'Classification',
+        cp: 'CP',
+        dimensions: 'Dimensions',
+        height: 'Height',
+        hp: 'HP',
+        resistantTo: 'Resistant to',
+        types: 'Types',
+        weaknesses: 'Weaknesses',
+        weight: 'Weight',
+      },
+      evolutions: {
+        noData: 'This pokemon has no evolutions 👀',
+        title: 'Evolutions',
+      },
+      title: 'Pokemon Details',
+    },
+  },
   favorites: {
     empty: 'You have no favorite Pokemons. Time to add some!',
     favorite: 'Add to Favorites',
@@ -51,7 +71,7 @@ const TEXT = {
   meta: {
     appTitle: 'Pokedex',
   },
-  pokemonList: {
+  pokemonCard: {
     overlay: {
       viewDetail: 'View detail',
     },

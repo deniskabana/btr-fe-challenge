@@ -40,7 +40,6 @@ As it is with PoCs, prototypes and demo projects, I decided to cut some corners 
 - I changed the default port from 3000 to 3091 on the frontend, so that it doesn't conflict with my other projects. This wouldn't have been done so abruptly in a team environment.
 - My go-to structure in Next.js project is **feature-splitting**. Encapsulating and isolating most logic of a tuple in a single place (e.g. `@/src/components/pokemon/*`)
 - In a real project, I would personally end up using CSS-in-JS approach for it's flexible nature and DX/UX benefits. Sass modules do not offer any type safety or auto-completion and using it feels very 2012 - or I just haven't found those since it's my first time using Sass in **years**. Wasn't suicide inducing, actually. In contrast with some other methodologies...
-- Using a simple context as `AppState` instead of implementing Redux - size of the app does not require complex state management.
 
 ---
 
@@ -48,6 +47,7 @@ As it is with PoCs, prototypes and demo projects, I decided to cut some corners 
 
 - Decision to use `/pages` instead of `/app` router is due to future stability concerns.
 - I added `cors` middleware to the express backend
+- I decided not to use any state management library or methodology. If it wasn't a test project I'd implement a simple `React.context` to store in-session data.
 - This is my first time using GQL in years, so I'd very much appreciate feedback
   - If I had the freedom to use REST API, I would use `@tanstack/query` and would implement `redux-persist` (or `localStorage` implementation) to allow for effective caching, offline support and pre-loading. I would not use `WebWorkers`, I can do this all reliably in the main thread.
 - I am using `@carbon/react` for the first time. In my own projects, I mostly use `@mui/material` v5.x or css modules. **My opinion about carbon so far** is that it's oxymoronically too ridgid and flexible at the same time, with poor and often times incoherent documentation and is very obviously not written with first-class TS support - as my `tsc` built the app, but console gave me some `propTypes` error. Also, too much flexibility warrants for a lot tighter QA and UI control processes. I would not use this in a real project if I wouldn't be instructed to.

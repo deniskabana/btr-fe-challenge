@@ -1,0 +1,15 @@
+@use '@carbon/layout';
+@import 'src/styles/variables';
+
+.Button {}
+
+.Link {
+  display: flex;
+  color: $color-primary !important;
+  font-weight: $font-weight-semibold;
+  margin-bottom: layout.$spacing-03;
+}
+
+.Icon {
+  margin-right: layout.$spacing-02;
+}

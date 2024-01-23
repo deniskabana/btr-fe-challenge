@@ -1,0 +1,106 @@
+@use '@carbon/layout';
+@use '@carbon/colors';
+@import 'src/styles/variables';
+
+.Container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: layout.$spacing-04;
+  padding: $padding-spacious;
+  border-radius: $border-radius-default;
+  background-color: $content-bg;
+  box-shadow: $box-shadow-default;
+}
+
+.ImageWrapper {
+  flex: 1 1 30%;
+  height: 27.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: white;
+  border-radius: $border-radius-default;
+
+  img {
+    max-width: 95%;
+    max-height: 95%;
+    margin: auto;
+  }
+}
+
+.MetaWrapper {
+  flex: 1 0 auto;
+  padding: layout.$spacing-04;
+}
+
+.EvolutionsWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: layout.$spacing-04;
+  padding: $padding-spacious;
+  border-radius: $border-radius-default;
+  background-color: $content-bg;
+  box-shadow: $box-shadow-default;
+}
+
+.Evolutions {
+  display: flex;
+  gap: layout.$spacing-04;
+  min-width: 10rem;
+  max-width: 15rem;
+
+  div {
+    flex: 1 0 auto;
+  }
+}
+
+.Table {
+  width: 100%;
+  border-collapse: collapse;
+  line-height: 1.3;
+
+  h1 {
+    margin-bottom: layout.$spacing-02;
+  }
+
+  th {
+    font-weight: 600;
+    letter-spacing: 0.25px;
+
+    svg {
+      margin-right: layout.$spacing-03;
+    }
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid $border-color-lighter;
+    padding: layout.$spacing-04 0 layout.$spacing-04;
+    text-align: left;
+  }
+
+  .cds--progress-bar__label {
+    margin-block-end: 0 !important;
+  }
+}
+
+.PokemonName {
+  margin-bottom: layout.$spacing-05;
+}
+
+.HPBar,
+.CPBar {
+  --cds-layer: #{$bg};
+}
+
+.HPBar {
+  --cds-interactive: #{colors.$red-50};
+}
+
+.CPBar {
+  --cds-interactive: #{colors.$blue-40};
+}

@@ -5,6 +5,9 @@ import toast from 'react-hot-toast'
 import TEXT from '@/constants/TEXT'
 import { GET_POKEMON_BY_NAME_QUERY } from '../query'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
+import { PokemonDetailCard } from '../PokemonDetailCard/PokemonDetailCard'
+import { Pokemon } from '@/__generated__/graphql'
+import { BreadcumbBackBtn } from '@/components/common/BreadcrumbBackBtn/BreadcrumbBackBtn'
 
 export type PokemonDetailViewProps = {
   name: string
@@ -23,14 +26,14 @@ export const PokemonDetailView = ({ name }: PokemonDetailViewProps) => {
 
   return (
     <>
-      <PageTitle title={TEXT.filters.pokemon.title} />
+      <PageTitle title={TEXT.details.pokemon.title} />
+      <BreadcumbBackBtn />
 
       {/* Would've handled this one better in real-world app 🤞 */}
       {loading && <Loading withOverlay={true} />}
 
-      <code>
-        <pre>{JSON.stringify(pokemonData, null, 2)}</pre>
-      </code>
+      {/* I hate typecasting, but found no other way with my limited knowledge */}
+      {pokemonData && <PokemonDetailCard data={pokemonData as Pokemon} />}
     </>
   )
 }
