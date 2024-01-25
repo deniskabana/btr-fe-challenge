@@ -19,7 +19,6 @@ export const PokemonsGridCard = ({
   return (
     <div className={styles.GridItem}>
       <Link href={getPokemonDetailUrl(entity.name)}>
-        {/* TODO: ADD SHINE ANIMATION (METAL-LIKE) ON HOVER */}
         <div className={styles.Image}>
           <div className={styles.ImageOverlay}>{TEXT.pokemonCard.overlay.viewDetail}</div>
           <Image

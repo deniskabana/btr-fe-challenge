@@ -23,7 +23,6 @@ export const ThemeProvider = ({
     }
   }, [userPrefersDark])
 
-  // TODO: Implement a toggle in app
   const toggleTheme = () => {
     setIsDark(!isDark)
   }

@@ -50,7 +50,6 @@ export const PokemonsAllView = () => {
   }, [data?.pokemons.edges.length, fetchMore])
 
   useEffect(() => {
-    // TODO: add a guard clause for when used filter values have not changed
     refetch({
       // Since `filter` object is used as a form data object, here I had to "Cinderella" the values
       filter: {
