@@ -11,9 +11,7 @@ export default function Page() {
   return (
     <>
       <Head>
-        <title>
-          {TEXT.meta.appTitle} / {}
-        </title>
+        <title>{TEXT.meta.appTitle}</title>
       </Head>
       <main>
         <ContainerGrid>

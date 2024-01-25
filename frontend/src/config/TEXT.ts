@@ -19,6 +19,7 @@ const TEXT = {
         noData: 'This pokemon has no evolutions 👀',
         title: 'Evolutions',
       },
+      playSound: "Play Pokemon's sound",
       title: 'Pokemon Details',
     },
   },

@@ -12,7 +12,8 @@ import { ProgressBar } from '@carbon/react'
 import { Pokemon } from '@/__generated__/graphql'
 import TEXT from '@/config/TEXT'
 import styles from './styles.module.scss'
-import { PokemonsGridCard } from '../../common/PokemonsGrid/PokemonsGridCard'
+import { PokemonDetailEvolutions } from '../PokemonDetailEvolutions/PokemonDetailEvolutions'
+import { PokemonSoundBtn } from '../PokemonSoundBtn/PokemonSoundBtn'
 
 export type PokemonDetailCardProps = {
   // Fuck statically typing TS+GQL :(
@@ -36,14 +37,19 @@ export const PokemonDetailCard = ({ data }: PokemonDetailCardProps) => {
           />
         </div>
         <div className={styles.MetaWrapper}>
-          <h1 className={styles.PokemonName}>{data.name}</h1>
+          <div className={styles.TitleWrapper}>
+            <h1>{data.name}</h1>
+            <PokemonSoundBtn url={data.sound} />
+          </div>
+
+          {/* This would be much more useful if i globalized it with generic argument and would map over columns with user-provided functions */}
           <table className={styles.Table}>
             <tbody>
               <tr>
                 <th>
                   <DataCategorical /> {TEXT.details.pokemon.card.types}
                 </th>
-                <td>{data.types.join(', ')}</td>
+                <td>{data.types?.join(', ')}</td>
               </tr>
               <tr>
                 <th>
@@ -86,7 +92,7 @@ export const PokemonDetailCard = ({ data }: PokemonDetailCardProps) => {
                     label="HP"
                     value={data.maxHP}
                     className={styles.HPBar}
-                    max={3300} // Guessing this one to save time
+                    max={3500} // Guessing this one to save time
                     type="indented"
                   />
                 </td>
@@ -102,7 +108,7 @@ export const PokemonDetailCard = ({ data }: PokemonDetailCardProps) => {
                     label="CP"
                     value={data.maxCP}
                     className={styles.CPBar}
-                    max={3300} // Guessing this one to save time
+                    max={3500} // Guessing this one to save time
                   />
                 </td>
               </tr>
@@ -114,19 +120,7 @@ export const PokemonDetailCard = ({ data }: PokemonDetailCardProps) => {
       <div className={styles.EvolutionsWrapper}>
         <h3>{TEXT.details.pokemon.evolutions.title}</h3>
 
-        {data.evolutions?.length ? (
-          <div className={styles.Evolutions}>
-            {data.evolutions.map((evolution) => (
-              <PokemonsGridCard
-                key={evolution.id}
-                entity={evolution}
-                handleFavoriteClick={() => {}}
-              />
-            ))}
-          </div>
-        ) : (
-          <p>{TEXT.details.pokemon.evolutions.noData}</p>
-        )}
+        <PokemonDetailEvolutions data={data.evolutions} />
       </div>
     </>
   )

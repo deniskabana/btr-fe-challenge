@@ -6,6 +6,7 @@ import TEXT from '@/config/TEXT'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Pokemon } from '@/__generated__/graphql'
 import { BreadcumbBackBtn } from '@/components/common/BreadcrumbBackBtn/BreadcrumbBackBtn'
+import Head from 'next/head'
 import { PokemonDetailCard } from '../PokemonDetailCard/PokemonDetailCard'
 import { GET_POKEMON_BY_NAME_QUERY } from '../../query'
 
@@ -21,19 +22,25 @@ export const PokemonDetailView = ({ name }: PokemonDetailViewProps) => {
 
   useEffect(() => {
     if (loading) return
-
     if (error) toast.error(TEXT.filters.pokemon.toasts.error)
   }, [error, loading])
 
   return (
     <>
+      {!loading && !error && pokemonData && (
+        <Head>
+          <title>
+            {pokemonData.name} | {TEXT.meta.appTitle}
+          </title>
+        </Head>
+      )}
       <PageTitle title={TEXT.details.pokemon.title} />
       <BreadcumbBackBtn />
 
       {/* Would've handled this one better in real-world app 🤞 */}
       {loading && <Loading withOverlay={true} />}
 
-      {/* I hate typecasting, but found no other way with my limited knowledge */}
+      {/* I hate typecasting, but found no other way with my limited time */}
       {pokemonData && <PokemonDetailCard data={pokemonData as Pokemon} />}
     </>
   )

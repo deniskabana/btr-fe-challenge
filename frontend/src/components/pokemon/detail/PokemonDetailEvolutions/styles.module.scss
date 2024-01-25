@@ -1,0 +1,9 @@
+@use '@carbon/layout';
+@use '@carbon/colors';
+@import 'src/styles/variables';
+
+.Evolutions {
+  display: flex;
+  flex-direction: column;
+  gap: layout.$spacing-04;
+}
